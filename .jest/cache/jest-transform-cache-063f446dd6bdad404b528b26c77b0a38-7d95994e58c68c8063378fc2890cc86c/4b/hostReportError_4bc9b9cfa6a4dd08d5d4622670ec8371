@@ -1,0 +1,15 @@
+a02c05c0bad1ea7ea3b714120da7aecd
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function hostReportError(err) {
+  setTimeout(function () {
+    throw err;
+  });
+}
+
+exports.hostReportError = hostReportError;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbnRlcm5hbC91dGlsL2hvc3RSZXBvcnRFcnJvci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7QUFLQSxTQUFnQixlQUFoQixDQUFnQyxHQUFoQyxFQUF3QztBQUN0QyxFQUFBLFVBQVUsQ0FBQyxZQUFBO0FBQVEsVUFBTSxHQUFOO0FBQVksR0FBckIsQ0FBVjtBQUNEOztBQUZELE9BQUEsQ0FBQSxlQUFBLEdBQUEsZUFBQSJ9

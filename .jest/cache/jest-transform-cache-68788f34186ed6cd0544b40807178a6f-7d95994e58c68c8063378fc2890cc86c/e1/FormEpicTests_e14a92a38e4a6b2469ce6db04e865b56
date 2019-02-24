@@ -1,0 +1,69 @@
+5730fd2ccf6743592184e4de7fd6ea2b
+"use strict";var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+
+
+
+
+
+
+var _Epics = require("../Send/Epics");
+var _reduxObservable = require("redux-observable");
+var _ActionTypes = require("../ActionTypes");
+var _rxjs = require("rxjs");var _this = this;var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {return new (P || (P = Promise))(function (resolve, reject) {function fulfilled(value) {try {step(generator.next(value));} catch (e) {reject(e);}}function rejected(value) {try {step(generator["throw"](value));} catch (e) {reject(e);}}function step(result) {result.done ? resolve(result.value) : new P(function (resolve) {resolve(result.value);}).then(fulfilled, rejected);}step((generator = generator.apply(thisArg, _arguments || [])).next());});};
+describe("Form validation should function correctly", function () {
+
+  var store = {
+    value: {
+      account: {
+        totalAvailable: 1000,
+        totalSent: 0 } } };
+
+
+
+  it("send should submit successfully", function () {return __awaiter(_this, void 0, void 0, _regenerator.default.mark(function _callee() {var transaction, action, actionObservable, result, actions;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+              transaction = {
+                name: "",
+                email: "",
+                amount: "100" };
+
+              action = {
+                type: _ActionTypes.TypeKeys.SEND_MONEY,
+                transaction: transaction };
+
+              actionObservable = new _reduxObservable.ActionsObservable((0, _rxjs.of)(action));
+              result = (0, _Epics.SendMoneyEpic)(actionObservable, store);_context.next = 6;
+              return result.toPromise();case 6:actions = _context.sent;
+              expect(actions).toEqual({ type: _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS, transaction: transaction });case 8:case "end":return _context.stop();}}}, _callee, this);}));});
+
+  it("send should fail because you dont have enough money", function () {return __awaiter(_this, void 0, void 0, _regenerator.default.mark(function _callee2() {var transaction, action, actionObservable, result, actions;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+              transaction = {
+                name: "",
+                email: "",
+                amount: "1000000" };
+
+              action = {
+                type: _ActionTypes.TypeKeys.SEND_MONEY,
+                transaction: transaction };
+
+              actionObservable = new _reduxObservable.ActionsObservable((0, _rxjs.of)(action));
+              result = (0, _Epics.SendMoneyEpic)(actionObservable, store);_context2.next = 6;
+              return result.toPromise();case 6:actions = _context2.sent;
+              expect(actions).toEqual({
+                type: _ActionTypes.TypeKeys.SEND_MONEY_FAIL });case 8:case "end":return _context2.stop();}}}, _callee2, this);}));});
+
+
+  it("send should show an error message when the request does fail", function () {return __awaiter(_this, void 0, void 0, _regenerator.default.mark(function _callee3() {var action, actionObservable, result, actions;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+              action = {
+                type: _ActionTypes.TypeKeys.SEND_MONEY_FAIL };
+
+              actionObservable = new _reduxObservable.ActionsObservable((0, _rxjs.of)(action));
+              result = (0, _Epics.FailedSendEpic)(actionObservable);_context3.next = 5;
+              return result.toPromise();case 5:actions = _context3.sent;
+              expect(actions).toEqual({
+                type: _ActionTypes.TypeKeys.SHOW_ERROR,
+                title: _Epics.errorTitle,
+                message: _Epics.errorMessage });case 7:case "end":return _context3.stop();}}}, _callee3, this);}));});
+
+
+});

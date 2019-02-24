@@ -1,0 +1,75 @@
+8987eb09d54513a679d54c84beaca1ef
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _taggedTemplateLiteralLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/taggedTemplateLiteralLoose"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _SharedStyles = require("../Themes/SharedStyles");
+
+var _AccountPieChart = _interopRequireDefault(require("./AccountPieChart"));
+
+var _native = _interopRequireDefault(require("styled-components/native"));
+
+var _reactRedux = require("react-redux");
+
+var _App = require("../App");
+
+var _AccountTransactionsList = _interopRequireDefault(require("./AccountTransactionsList"));
+
+function _templateObject3() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n  align-items: center;\n  justify-content: center;\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n  font-size: 16px;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n  margin-top: 70px;\n  margin-bottom: 70px;\n  width: 100%;\n  align-items: center;\n  justify-content: space-evenly;\n  flex-direction: row;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var PieContainer = _native.default.View(_templateObject());
+
+var PieAccountText = _native.default.Text(_templateObject2());
+
+var PieTextContainer = _native.default.View(_templateObject3());
+
+var AccountDetailsComponent = function AccountDetailsComponent(props) {
+  return _react.default.createElement(_SharedStyles.Container, null, _react.default.createElement(_SharedStyles.InnerContainer, null, _react.default.createElement(_SharedStyles.SectionTitle, null, "My account"), _react.default.createElement(PieContainer, null, _react.default.createElement(PieTextContainer, null, _react.default.createElement(PieAccountText, null, _App.currency + " " + props.totalSent), _react.default.createElement(PieAccountText, null, "total sent")), _react.default.createElement(_AccountPieChart.default, null), _react.default.createElement(PieTextContainer, null, _react.default.createElement(PieAccountText, null, _App.currency + " " + props.totalAvailable), _react.default.createElement(PieAccountText, null, "total available"))), _react.default.createElement(_AccountTransactionsList.default, null)));
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    totalSent: state.account.totalSent,
+    totalAvailable: state.account.totalAvailable
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(AccountDetailsComponent);
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9BY2NvdW50L0FjY291bnREZXRhaWxzQ29tcG9uZW50LnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBQTs7QUFDQTs7QUFLQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFFQSxJQUFNLFlBQVksR0FBRyxnQkFBTyxJQUFWLG1CQUFsQjs7QUFRQSxJQUFNLGNBQWMsR0FBRyxnQkFBTyxJQUFWLG9CQUFwQjs7QUFJQSxJQUFNLGdCQUFnQixHQUFHLGdCQUFPLElBQVYsb0JBQXRCOztBQVVBLElBQU0sdUJBQXVCLEdBQUcsU0FBMUIsdUJBQTBCLENBQUMsS0FBRCxFQUErQjtBQUM3RCxTQUNFLGVBQUEsYUFBQSxDQUFDLHVCQUFELEVBQVUsSUFBVixFQUNFLGVBQUEsYUFBQSxDQUFDLDRCQUFELEVBQWUsSUFBZixFQUNFLGVBQUEsYUFBQSxDQUFDLDBCQUFELEVBQWEsSUFBYixFQUFhLFlBQWIsQ0FERixFQUVFLGVBQUEsYUFBQSxDQUFDLFlBQUQsRUFBYSxJQUFiLEVBQ0UsZUFBQSxhQUFBLENBQUMsZ0JBQUQsRUFBaUIsSUFBakIsRUFDRSxlQUFBLGFBQUEsQ0FBQyxjQUFELEVBQWUsSUFBZixFQUFvQixhQUFwQixTQUFnQyxLQUFLLENBQUMsU0FBdEMsQ0FERixFQUVFLGVBQUEsYUFBQSxDQUFDLGNBQUQsRUFBZSxJQUFmLEVBQWUsWUFBZixDQUZGLENBREYsRUFLRSxlQUFBLGFBQUEsQ0FBQyx3QkFBRCxFQUFnQixJQUFoQixDQUxGLEVBTUUsZUFBQSxhQUFBLENBQUMsZ0JBQUQsRUFBaUIsSUFBakIsRUFDRSxlQUFBLGFBQUEsQ0FBQyxjQUFELEVBQWUsSUFBZixFQUNNLGFBRE4sU0FDa0IsS0FBSyxDQUFDLGNBRHhCLENBREYsRUFJRSxlQUFBLGFBQUEsQ0FBQyxjQUFELEVBQWUsSUFBZixFQUFlLGlCQUFmLENBSkYsQ0FORixDQUZGLEVBZUUsZUFBQSxhQUFBLENBQUMsZ0NBQUQsRUFBd0IsSUFBeEIsQ0FmRixDQURGLENBREY7QUFxQkQsQ0F0QkQ7O0FBd0JBLElBQU0sZUFBZSxHQUFHLFNBQWxCLGVBQWtCLENBQUMsS0FBRDtBQUFBLFNBQXdDO0FBQzlELElBQUEsU0FBUyxFQUFFLEtBQUssQ0FBQyxPQUFOLENBQWMsU0FEcUM7QUFFOUQsSUFBQSxjQUFjLEVBQUUsS0FBSyxDQUFDLE9BQU4sQ0FBYztBQUZnQyxHQUF4QztBQUFBLENBQXhCOztlQUtlLHlCQUFRLGVBQVIsRUFBeUIsdUJBQXpCLEMiLCJzb3VyY2VSb290IjoiIn0=

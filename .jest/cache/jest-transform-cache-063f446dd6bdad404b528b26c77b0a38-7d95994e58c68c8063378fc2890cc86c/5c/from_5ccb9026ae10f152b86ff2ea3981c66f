@@ -1,0 +1,53 @@
+50746d3d2b1ea0884ebe24f7d6b5445f
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Observable_1 = require("../Observable");
+
+var isPromise_1 = require("../util/isPromise");
+
+var isArrayLike_1 = require("../util/isArrayLike");
+
+var isInteropObservable_1 = require("../util/isInteropObservable");
+
+var isIterable_1 = require("../util/isIterable");
+
+var fromArray_1 = require("./fromArray");
+
+var fromPromise_1 = require("./fromPromise");
+
+var fromIterable_1 = require("./fromIterable");
+
+var fromObservable_1 = require("./fromObservable");
+
+var subscribeTo_1 = require("../util/subscribeTo");
+
+function from(input, scheduler) {
+  if (!scheduler) {
+    if (input instanceof Observable_1.Observable) {
+      return input;
+    }
+
+    return new Observable_1.Observable(subscribeTo_1.subscribeTo(input));
+  }
+
+  if (input != null) {
+    if (isInteropObservable_1.isInteropObservable(input)) {
+      return fromObservable_1.fromObservable(input, scheduler);
+    } else if (isPromise_1.isPromise(input)) {
+      return fromPromise_1.fromPromise(input, scheduler);
+    } else if (isArrayLike_1.isArrayLike(input)) {
+      return fromArray_1.fromArray(input, scheduler);
+    } else if (isIterable_1.isIterable(input) || typeof input === 'string') {
+      return fromIterable_1.fromIterable(input, scheduler);
+    }
+  }
+
+  throw new TypeError((input !== null && typeof input || input) + ' is not observable');
+}
+
+exports.from = from;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbnRlcm5hbC9vYnNlcnZhYmxlL2Zyb20udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUEsSUFBQSxZQUFBLEdBQUEsT0FBQSxDQUFBLGVBQUEsQ0FBQTs7QUFDQSxJQUFBLFdBQUEsR0FBQSxPQUFBLENBQUEsbUJBQUEsQ0FBQTs7QUFDQSxJQUFBLGFBQUEsR0FBQSxPQUFBLENBQUEscUJBQUEsQ0FBQTs7QUFDQSxJQUFBLHFCQUFBLEdBQUEsT0FBQSxDQUFBLDZCQUFBLENBQUE7O0FBQ0EsSUFBQSxZQUFBLEdBQUEsT0FBQSxDQUFBLG9CQUFBLENBQUE7O0FBQ0EsSUFBQSxXQUFBLEdBQUEsT0FBQSxDQUFBLGFBQUEsQ0FBQTs7QUFDQSxJQUFBLGFBQUEsR0FBQSxPQUFBLENBQUEsZUFBQSxDQUFBOztBQUNBLElBQUEsY0FBQSxHQUFBLE9BQUEsQ0FBQSxnQkFBQSxDQUFBOztBQUNBLElBQUEsZ0JBQUEsR0FBQSxPQUFBLENBQUEsa0JBQUEsQ0FBQTs7QUFDQSxJQUFBLGFBQUEsR0FBQSxPQUFBLENBQUEscUJBQUEsQ0FBQTs7QUF1RkEsU0FBZ0IsSUFBaEIsQ0FBd0IsS0FBeEIsRUFBbUQsU0FBbkQsRUFBNEU7QUFDMUUsTUFBSSxDQUFDLFNBQUwsRUFBZ0I7QUFDZCxRQUFJLEtBQUssWUFBWSxZQUFBLENBQUEsVUFBckIsRUFBaUM7QUFDL0IsYUFBTyxLQUFQO0FBQ0Q7O0FBQ0QsV0FBTyxJQUFJLFlBQUEsQ0FBQSxVQUFKLENBQWtCLGFBQUEsQ0FBQSxXQUFBLENBQVksS0FBWixDQUFsQixDQUFQO0FBQ0Q7O0FBRUQsTUFBSSxLQUFLLElBQUksSUFBYixFQUFtQjtBQUNqQixRQUFJLHFCQUFBLENBQUEsbUJBQUEsQ0FBb0IsS0FBcEIsQ0FBSixFQUFnQztBQUM5QixhQUFPLGdCQUFBLENBQUEsY0FBQSxDQUFlLEtBQWYsRUFBc0IsU0FBdEIsQ0FBUDtBQUNELEtBRkQsTUFFTyxJQUFJLFdBQUEsQ0FBQSxTQUFBLENBQVUsS0FBVixDQUFKLEVBQXNCO0FBQzNCLGFBQU8sYUFBQSxDQUFBLFdBQUEsQ0FBWSxLQUFaLEVBQW1CLFNBQW5CLENBQVA7QUFDRCxLQUZNLE1BRUEsSUFBSSxhQUFBLENBQUEsV0FBQSxDQUFZLEtBQVosQ0FBSixFQUF3QjtBQUM3QixhQUFPLFdBQUEsQ0FBQSxTQUFBLENBQVUsS0FBVixFQUFpQixTQUFqQixDQUFQO0FBQ0QsS0FGTSxNQUVDLElBQUksWUFBQSxDQUFBLFVBQUEsQ0FBVyxLQUFYLEtBQXFCLE9BQU8sS0FBUCxLQUFpQixRQUExQyxFQUFvRDtBQUMxRCxhQUFPLGNBQUEsQ0FBQSxZQUFBLENBQWEsS0FBYixFQUFvQixTQUFwQixDQUFQO0FBQ0Q7QUFDRjs7QUFFRCxRQUFNLElBQUksU0FBSixDQUFjLENBQUMsS0FBSyxLQUFLLElBQVYsSUFBa0IsT0FBTyxLQUF6QixJQUFrQyxLQUFuQyxJQUE0QyxvQkFBMUQsQ0FBTjtBQUNEOztBQXJCRCxPQUFBLENBQUEsSUFBQSxHQUFBLElBQUEifQ==

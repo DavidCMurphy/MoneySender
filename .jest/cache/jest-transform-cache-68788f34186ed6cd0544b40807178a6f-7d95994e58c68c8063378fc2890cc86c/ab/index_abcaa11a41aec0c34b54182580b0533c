@@ -1,0 +1,15 @@
+e165303e16dadc71e6be241243055420
+"use strict";var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");Object.defineProperty(exports, "__esModule", { value: true });exports.default = exports.defaultSendState = void 0;var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));var _ActionTypes = require("../../ActionTypes");
+var defaultSendState = function defaultSendState() {return { loading: false };};exports.defaultSendState = defaultSendState;var _default =
+function _default() {var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultSendState();var action = arguments.length > 1 ? arguments[1] : undefined;
+  switch (action.type) {
+    case _ActionTypes.TypeKeys.SEND_MONEY:
+      return (0, _extends2.default)({}, state, { loading: true });
+    case _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS:
+      return (0, _extends2.default)({}, state, { loading: false });
+    case _ActionTypes.TypeKeys.SEND_MONEY_FAIL:
+      return (0, _extends2.default)({}, state, { loading: false });
+    default:
+      return state;}
+
+};exports.default = _default;

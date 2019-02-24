@@ -1,0 +1,9 @@
+e3cd36209d3c10070f7a941e9e847a66
+require("react-native");
+
+describe('Customer history views should be presented', function () {
+  it('should render generic stats successfully', function () {
+    expect(true).toEqual(false);
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9fX3Rlc3RzX18vQXBwLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFLQTs7QUFFQSxRQUFRLENBQUMsNENBQUQsRUFBK0MsWUFBSztBQUUxRCxFQUFBLEVBQUUsQ0FBQywwQ0FBRCxFQUE2QyxZQUFLO0FBQ2hELElBQUEsTUFBTSxDQUFDLElBQUQsQ0FBTixDQUFhLE9BQWIsQ0FBcUIsS0FBckI7QUFDSCxHQUZDLENBQUY7QUFHRCxDQUxPLENBQVIiLCJzb3VyY2VSb290IjoiIn0=

@@ -1,0 +1,8 @@
+af38f1b8d6c54eb38101acb4ac7dea3d
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.colors = void 0;var colors = {
+  title: '#1c2139',
+  lightText: '#4a4a4a',
+  red: '#d0021b',
+  blue: '#4b3cfa',
+  lightGrey: '#d6d7de',
+  orange: '#ffb428' };exports.colors = colors;

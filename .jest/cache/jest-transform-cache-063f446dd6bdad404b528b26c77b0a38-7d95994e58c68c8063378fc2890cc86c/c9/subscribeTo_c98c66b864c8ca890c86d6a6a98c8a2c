@@ -1,0 +1,53 @@
+ec581eaee87898aa41dfbb18d1fd6f4f
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Observable_1 = require("../Observable");
+
+var subscribeToArray_1 = require("./subscribeToArray");
+
+var subscribeToPromise_1 = require("./subscribeToPromise");
+
+var subscribeToIterable_1 = require("./subscribeToIterable");
+
+var subscribeToObservable_1 = require("./subscribeToObservable");
+
+var isArrayLike_1 = require("./isArrayLike");
+
+var isPromise_1 = require("./isPromise");
+
+var isObject_1 = require("./isObject");
+
+var iterator_1 = require("../symbol/iterator");
+
+var observable_1 = require("../symbol/observable");
+
+exports.subscribeTo = function (result) {
+  if (result instanceof Observable_1.Observable) {
+    return function (subscriber) {
+      if (result._isScalar) {
+        subscriber.next(result.value);
+        subscriber.complete();
+        return undefined;
+      } else {
+        return result.subscribe(subscriber);
+      }
+    };
+  } else if (!!result && typeof result[observable_1.observable] === 'function') {
+    return subscribeToObservable_1.subscribeToObservable(result);
+  } else if (isArrayLike_1.isArrayLike(result)) {
+    return subscribeToArray_1.subscribeToArray(result);
+  } else if (isPromise_1.isPromise(result)) {
+    return subscribeToPromise_1.subscribeToPromise(result);
+  } else if (!!result && typeof result[iterator_1.iterator] === 'function') {
+    return subscribeToIterable_1.subscribeToIterable(result);
+  } else {
+    var value = isObject_1.isObject(result) ? 'an invalid object' : "'" + result + "'";
+    var msg = "You provided " + value + " where a stream was expected." + ' You can provide an Observable, Promise, Array, or Iterable.';
+    throw new TypeError(msg);
+  }
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbnRlcm5hbC91dGlsL3N1YnNjcmliZVRvLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFBLElBQUEsWUFBQSxHQUFBLE9BQUEsQ0FBQSxlQUFBLENBQUE7O0FBRUEsSUFBQSxrQkFBQSxHQUFBLE9BQUEsQ0FBQSxvQkFBQSxDQUFBOztBQUNBLElBQUEsb0JBQUEsR0FBQSxPQUFBLENBQUEsc0JBQUEsQ0FBQTs7QUFDQSxJQUFBLHFCQUFBLEdBQUEsT0FBQSxDQUFBLHVCQUFBLENBQUE7O0FBQ0EsSUFBQSx1QkFBQSxHQUFBLE9BQUEsQ0FBQSx5QkFBQSxDQUFBOztBQUNBLElBQUEsYUFBQSxHQUFBLE9BQUEsQ0FBQSxlQUFBLENBQUE7O0FBQ0EsSUFBQSxXQUFBLEdBQUEsT0FBQSxDQUFBLGFBQUEsQ0FBQTs7QUFDQSxJQUFBLFVBQUEsR0FBQSxPQUFBLENBQUEsWUFBQSxDQUFBOztBQUNBLElBQUEsVUFBQSxHQUFBLE9BQUEsQ0FBQSxvQkFBQSxDQUFBOztBQUNBLElBQUEsWUFBQSxHQUFBLE9BQUEsQ0FBQSxzQkFBQSxDQUFBOztBQUdhLE9BQUEsQ0FBQSxXQUFBLEdBQWMsVUFBSSxNQUFKLEVBQThCO0FBQ3ZELE1BQUksTUFBTSxZQUFZLFlBQUEsQ0FBQSxVQUF0QixFQUFrQztBQUNoQyxXQUFPLFVBQUMsVUFBRCxFQUEwQjtBQUM3QixVQUFJLE1BQU0sQ0FBQyxTQUFYLEVBQXNCO0FBQ3RCLFFBQUEsVUFBVSxDQUFDLElBQVgsQ0FBaUIsTUFBYyxDQUFDLEtBQWhDO0FBQ0EsUUFBQSxVQUFVLENBQUMsUUFBWDtBQUNBLGVBQU8sU0FBUDtBQUNELE9BSkMsTUFJSztBQUNMLGVBQU8sTUFBTSxDQUFDLFNBQVAsQ0FBaUIsVUFBakIsQ0FBUDtBQUNEO0FBQ0YsS0FSRDtBQVNELEdBVkQsTUFVTyxJQUFJLENBQUMsQ0FBQyxNQUFGLElBQVksT0FBTyxNQUFNLENBQUMsWUFBQSxDQUFBLFVBQUQsQ0FBYixLQUFxQyxVQUFyRCxFQUFpRTtBQUN0RSxXQUFPLHVCQUFBLENBQUEscUJBQUEsQ0FBc0IsTUFBdEIsQ0FBUDtBQUNELEdBRk0sTUFFQSxJQUFJLGFBQUEsQ0FBQSxXQUFBLENBQVksTUFBWixDQUFKLEVBQXlCO0FBQzlCLFdBQU8sa0JBQUEsQ0FBQSxnQkFBQSxDQUFpQixNQUFqQixDQUFQO0FBQ0QsR0FGTSxNQUVBLElBQUksV0FBQSxDQUFBLFNBQUEsQ0FBVSxNQUFWLENBQUosRUFBdUI7QUFDNUIsV0FBTyxvQkFBQSxDQUFBLGtCQUFBLENBQW1CLE1BQW5CLENBQVA7QUFDRCxHQUZNLE1BRUEsSUFBSSxDQUFDLENBQUMsTUFBRixJQUFZLE9BQU8sTUFBTSxDQUFDLFVBQUEsQ0FBQSxRQUFELENBQWIsS0FBbUMsVUFBbkQsRUFBK0Q7QUFDcEUsV0FBTyxxQkFBQSxDQUFBLG1CQUFBLENBQW9CLE1BQXBCLENBQVA7QUFDRCxHQUZNLE1BRUE7QUFDTCxRQUFNLEtBQUssR0FBRyxVQUFBLENBQUEsUUFBQSxDQUFTLE1BQVQsSUFBbUIsbUJBQW5CLEdBQXlDLE1BQUksTUFBSixHQUFVLEdBQWpFO0FBQ0EsUUFBTSxHQUFHLEdBQUcsa0JBQWdCLEtBQWhCLEdBQXFCLCtCQUFyQixHQUNSLDhEQURKO0FBRUEsVUFBTSxJQUFJLFNBQUosQ0FBYyxHQUFkLENBQU47QUFDRDtBQUNGLENBekJZIn0=

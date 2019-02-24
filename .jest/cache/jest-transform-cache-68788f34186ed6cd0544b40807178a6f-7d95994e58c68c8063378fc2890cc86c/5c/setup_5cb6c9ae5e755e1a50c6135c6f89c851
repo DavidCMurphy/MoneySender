@@ -1,0 +1,2 @@
+9902be7c02ce4bb95acd83af93c05fe3
+jest.mock('react-native-svg-charts', function () {return {};});

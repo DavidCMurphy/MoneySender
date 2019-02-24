@@ -1,0 +1,19 @@
+07bdecc2a9c60c2c77bdcdbb88166758
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Observable_1 = require("../Observable");
+
+var noop_1 = require("../util/noop");
+
+exports.NEVER = new Observable_1.Observable(noop_1.noop);
+
+function never() {
+  return exports.NEVER;
+}
+
+exports.never = never;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbnRlcm5hbC9vYnNlcnZhYmxlL25ldmVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFBLElBQUEsWUFBQSxHQUFBLE9BQUEsQ0FBQSxlQUFBLENBQUE7O0FBQ0EsSUFBQSxNQUFBLEdBQUEsT0FBQSxDQUFBLGNBQUEsQ0FBQTs7QUFnQ2EsT0FBQSxDQUFBLEtBQUEsR0FBUSxJQUFJLFlBQUEsQ0FBQSxVQUFKLENBQXNCLE1BQUEsQ0FBQSxJQUF0QixDQUFSOztBQUtiLFNBQWdCLEtBQWhCLEdBQXFCO0FBQ25CLFNBQU8sT0FBQSxDQUFBLEtBQVA7QUFDRDs7QUFGRCxPQUFBLENBQUEsS0FBQSxHQUFBLEtBQUEifQ==

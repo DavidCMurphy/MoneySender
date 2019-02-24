@@ -1,0 +1,13 @@
+397bb47cefc690c742991c94b963d046
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var AnimationFrameAction_1 = require("./AnimationFrameAction");
+
+var AnimationFrameScheduler_1 = require("./AnimationFrameScheduler");
+
+exports.animationFrame = new AnimationFrameScheduler_1.AnimationFrameScheduler(AnimationFrameAction_1.AnimationFrameAction);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbnRlcm5hbC9zY2hlZHVsZXIvYW5pbWF0aW9uRnJhbWUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUEsSUFBQSxzQkFBQSxHQUFBLE9BQUEsQ0FBQSx3QkFBQSxDQUFBOztBQUNBLElBQUEseUJBQUEsR0FBQSxPQUFBLENBQUEsMkJBQUEsQ0FBQTs7QUFzQ2EsT0FBQSxDQUFBLGNBQUEsR0FBaUIsSUFBSSx5QkFBQSxDQUFBLHVCQUFKLENBQTRCLHNCQUFBLENBQUEsb0JBQTVCLENBQWpCIn0=

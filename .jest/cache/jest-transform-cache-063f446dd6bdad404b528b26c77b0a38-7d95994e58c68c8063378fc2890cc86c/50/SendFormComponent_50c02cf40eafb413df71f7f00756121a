@@ -1,0 +1,179 @@
+f348f1d248c7ae34b5a1ebee66de6d77
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _taggedTemplateLiteralLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/taggedTemplateLiteralLoose"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactNative = require("react-native");
+
+var _FormInputComponent = _interopRequireDefault(require("./FormInputComponent"));
+
+var _native = _interopRequireDefault(require("styled-components/native"));
+
+var _colors = require("../Themes/colors");
+
+var _SharedStyles = require("../Themes/SharedStyles");
+
+var _reactRedux = require("react-redux");
+
+var _ActionTypes = require("../ActionTypes");
+
+var _Forms = require("./Forms");
+
+function _templateObject2() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n    color: white;\n    font-size: 15px;\n    font-family: System;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n    background-color: ", ";\n    height: 48px;\n    border-radius: 24px;\n    align-items: center;\n    justify-content: center;\n    margin-bottom: 10px;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var SendButton = _native.default.TouchableOpacity(_templateObject(), _colors.colors.blue);
+
+var SendButtonTitle = _native.default.Text(_templateObject2());
+
+var SendFormComponent = function (_Component) {
+  (0, _inherits2.default)(SendFormComponent, _Component);
+
+  function SendFormComponent() {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, SendFormComponent);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(SendFormComponent).apply(this, arguments));
+    _this.state = {
+      name: (0, _Forms.nameForm)(),
+      emailAddress: (0, _Forms.emailForm)(),
+      amount: (0, _Forms.amountForm)()
+    };
+
+    _this.sendForm = function () {
+      _reactNative.Keyboard.dismiss();
+
+      var _this$state = _this.state,
+          name = _this$state.name,
+          emailAddress = _this$state.emailAddress,
+          amount = _this$state.amount;
+
+      if (name.value && name.isValid && emailAddress.value && emailAddress.isValid && amount.value && amount.isValid) {
+        _this.props.send({
+          name: name.value,
+          email: emailAddress.value,
+          amount: amount.value
+        });
+      } else {
+        _this.setState({
+          name: (0, _extends2.default)({}, name, {
+            isValid: name.validation(name.value)
+          }),
+          emailAddress: (0, _extends2.default)({}, emailAddress, {
+            isValid: emailAddress.validation(emailAddress.value)
+          }),
+          amount: (0, _extends2.default)({}, amount, {
+            isValid: amount.validation(amount.value)
+          })
+        });
+      }
+    };
+
+    return _this;
+  }
+
+  (0, _createClass2.default)(SendFormComponent, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$state2 = this.state,
+          name = _this$state2.name,
+          emailAddress = _this$state2.emailAddress,
+          amount = _this$state2.amount;
+      return _react.default.createElement(_SharedStyles.Container, null, _react.default.createElement(_SharedStyles.InnerContainer, null, _react.default.createElement(_SharedStyles.SectionTitle, null, "Send money"), _react.default.createElement(_FormInputComponent.default, {
+        form: name,
+        onChange: function onChange(name) {
+          return _this2.setState({
+            name: name
+          });
+        }
+      }), _react.default.createElement(_FormInputComponent.default, {
+        form: emailAddress,
+        onChange: function onChange(emailAddress) {
+          return _this2.setState({
+            emailAddress: emailAddress
+          });
+        }
+      }), _react.default.createElement(_FormInputComponent.default, {
+        form: amount,
+        onChange: function onChange(amount) {
+          return _this2.setState({
+            amount: amount
+          });
+        }
+      }), _react.default.createElement(_reactNative.View, {
+        style: {
+          flex: 1
+        }
+      }), _react.default.createElement(SendButton, {
+        disabled: this.props.isLoading,
+        onPress: this.sendForm
+      }, this.props.isLoading ? _react.default.createElement(_reactNative.ActivityIndicator, {
+        animating: true,
+        color: 'white'
+      }) : _react.default.createElement(SendButtonTitle, null, "Send"))));
+    }
+  }]);
+  return SendFormComponent;
+}(_react.Component);
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    send: function send(transaction) {
+      return dispatch({
+        type: _ActionTypes.TypeKeys.SEND_MONEY,
+        transaction: transaction
+      });
+    }
+  };
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    isLoading: state.send.loading
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SendFormComponent);
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9TZW5kL1NlbmRGb3JtQ29tcG9uZW50LnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBOztBQUNBOztBQUNBOztBQUNBOztBQUNBOztBQUNBOztBQUNBOztBQUVBOztBQUVBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBRUEsSUFBTSxVQUFVLEdBQUcsZ0JBQU8sZ0JBQVYsb0JBQ1MsZUFBTyxJQURoQixDQUFoQjs7QUFRQSxJQUFNLGVBQWUsR0FBRyxnQkFBTyxJQUFWLG9CQUFyQjs7SUFvQk0saUI7OztBQUFOLCtCQUFBO0FBQUE7O0FBQUE7O0FBRUUsVUFBQSxLQUFBLEdBQXVCO0FBQ3JCLE1BQUEsSUFBSSxFQUFFLHNCQURlO0FBRXJCLE1BQUEsWUFBWSxFQUFFLHVCQUZPO0FBR3JCLE1BQUEsTUFBTSxFQUFFO0FBSGEsS0FBdkI7O0FBTUEsVUFBQSxRQUFBLEdBQVcsWUFBSztBQUVkLDRCQUFTLE9BQVQ7O0FBRmMsd0JBSXVCLE1BQUssS0FKNUI7QUFBQSxVQUlSLElBSlEsZUFJUixJQUpRO0FBQUEsVUFJRixZQUpFLGVBSUYsWUFKRTtBQUFBLFVBSVksTUFKWixlQUlZLE1BSlo7O0FBS2QsVUFBSyxJQUFJLENBQUMsS0FBTCxJQUFjLElBQUksQ0FBQyxPQUFuQixJQUNELFlBQVksQ0FBQyxLQURaLElBQ3FCLFlBQVksQ0FBQyxPQURsQyxJQUVELE1BQU0sQ0FBQyxLQUZOLElBRWUsTUFBTSxDQUFDLE9BRjNCLEVBRXFDO0FBQ25DLGNBQUssS0FBTCxDQUFXLElBQVgsQ0FBaUI7QUFBRSxVQUFBLElBQUksRUFBRSxJQUFJLENBQUMsS0FBYjtBQUFvQixVQUFBLEtBQUssRUFBRSxZQUFZLENBQUMsS0FBeEM7QUFBK0MsVUFBQSxNQUFNLEVBQUUsTUFBTSxDQUFDO0FBQTlELFNBQWpCO0FBQ0QsT0FKRCxNQUlPO0FBQ0wsY0FBSyxRQUFMLENBQWM7QUFBRSxVQUFBLElBQUksRUFBQSx1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

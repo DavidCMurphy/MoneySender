@@ -1,0 +1,156 @@
+4ff8cab9ae9fd7053b0dc8568746c039
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _Epics = require("../Send/Epics");
+
+var _reduxObservable = require("redux-observable");
+
+var _ActionTypes = require("../ActionTypes");
+
+var _rxjs = require("rxjs");
+
+var _this = this;
+
+var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : new P(function (resolve) {
+        resolve(result.value);
+      }).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+describe("Form validation should function correctly", function () {
+  var store = {
+    value: {
+      account: {
+        totalAvailable: 1000,
+        totalSent: 0
+      }
+    }
+  };
+  it("send should submit successfully", function () {
+    return __awaiter(_this, void 0, void 0, _regenerator.default.mark(function _callee() {
+      var transaction, action, actionObservable, result, actions;
+      return _regenerator.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              transaction = {
+                name: "",
+                email: "",
+                amount: "100"
+              };
+              action = {
+                type: _ActionTypes.TypeKeys.SEND_MONEY,
+                transaction: transaction
+              };
+              actionObservable = new _reduxObservable.ActionsObservable((0, _rxjs.of)(action));
+              result = (0, _Epics.SendMoneyEpic)(actionObservable, store);
+              _context.next = 6;
+              return result.toPromise();
+
+            case 6:
+              actions = _context.sent;
+              expect(actions).toEqual({
+                type: _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS,
+                transaction: transaction
+              });
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+  });
+  it("send should fail because you dont have enough money", function () {
+    return __awaiter(_this, void 0, void 0, _regenerator.default.mark(function _callee2() {
+      var transaction, action, actionObservable, result, actions;
+      return _regenerator.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              transaction = {
+                name: "",
+                email: "",
+                amount: "1000000"
+              };
+              action = {
+                type: _ActionTypes.TypeKeys.SEND_MONEY,
+                transaction: transaction
+              };
+              actionObservable = new _reduxObservable.ActionsObservable((0, _rxjs.of)(action));
+              result = (0, _Epics.SendMoneyEpic)(actionObservable, store);
+              _context2.next = 6;
+              return result.toPromise();
+
+            case 6:
+              actions = _context2.sent;
+              expect(actions).toEqual({
+                type: _ActionTypes.TypeKeys.SEND_MONEY_FAIL
+              });
+
+            case 8:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, this);
+    }));
+  });
+  it("send should show an error message when the request does fail", function () {
+    return __awaiter(_this, void 0, void 0, _regenerator.default.mark(function _callee3() {
+      var action, actionObservable, result, actions;
+      return _regenerator.default.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              action = {
+                type: _ActionTypes.TypeKeys.SEND_MONEY_FAIL
+              };
+              actionObservable = new _reduxObservable.ActionsObservable((0, _rxjs.of)(action));
+              result = (0, _Epics.FailedSendEpic)(actionObservable);
+              _context3.next = 5;
+              return result.toPromise();
+
+            case 5:
+              actions = _context3.sent;
+              expect(actions).toEqual({
+                type: _ActionTypes.TypeKeys.SHOW_ERROR,
+                title: _Epics.errorTitle,
+                message: _Epics.errorMessage
+              });
+
+            case 7:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, this);
+    }));
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9fX3Rlc3RzX18vRm9ybUVwaWNUZXN0cy50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBOztBQUVBOztBQUNBOztBQUNBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUdBLFFBQVEsQ0FBQywyQ0FBRCxFQUE4QyxZQUFLO0FBRXpELE1BQU0sS0FBSyxHQUFHO0FBQ1osSUFBQSxLQUFLLEVBQUU7QUFDTCxNQUFBLE9BQU8sRUFBRTtBQUNQLFFBQUEsY0FBYyxFQUFFLElBRFQ7QUFFUCxRQUFBLFNBQVMsRUFBRTtBQUZKO0FBREo7QUFESyxHQUFkO0FBU0EsRUFBQSxFQUFFLG9DQUFvQztBQUFBLFdBQVcsU0FBQSxDQUFBLEtBQUEsRUFBQSxLQUFBLENBQUEsRUFBQSxLQUFBLENBQUEsNEJBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQ3pDLGNBQUEsV0FEeUMsR0FDZDtBQUMvQixnQkFBQSxJQUFJLEVBQUUsRUFEeUI7QUFFL0IsZ0JBQUEsS0FBSyxFQUFFLEVBRndCO0FBRy9CLGdCQUFBLE1BQU0sRUFBRTtBQUh1QixlQURjO0FBT3pDLGNBQUEsTUFQeUMsR0FPZjtBQUM5QixnQkFBQSxJQUFJLEVBQUUsc0JBQVMsVUFEZTtBQUU5QixnQkFBQSxXQUFXLEVBQVg7QUFGOEIsZUFQZTtBQVl6QyxjQUFBLGdCQVp5QyxHQVl0QixJQUFJLGtDQUFKLENBQWlDLGNBQUcsTUFBSCxDQUFqQyxDQVpzQjtBQWF6QyxjQUFBLE1BYnlDLEdBYWhDLDBCQUFjLGdCQUFkLEVBQWdDLEtBQWhDLENBYmdDO0FBQUE7QUFjL0IscUJBQU0sTUFBTSxDQUFDLFNBQVAsRUFBTjs7QUFkK0I7QUFjekMsY0FBQSxPQWR5QztBQWdCL0MsY0FBQSxNQUFNLENBQUMsT0FBRCxDQUFOLENBQWdCLE9BQWhCLENBQXdCO0FBQUUsZ0JBQUEsSUFBSSxFQUFFLHNCQUFTLGtCQUFqQjtBQUFxQyxnQkFBQSxXQUFXLEVBQVg7QUFBckMsZUFBeEI7O0FBaEIrQztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxLQUFBLEVBQVg7QUFBQSxHQUFwQyxDQUFGO0FBbUJBLEVBQUEsRUFBRSx3REFBd0Q7QUFBQSxXQUFXLFNBQUEsQ0FBQSxLQUFBLEVBQUEsS0FBQSxDQUFBLEVBQUEsS0FBQSxDQUFBLDRCQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUM3RCxjQUFBLFdBRDZELEdBQ2xDO0FBQy9CLGdCQUFBLElBQUksRUFBRSxFQUR5QjtBQUUvQixnQkFBQSxLQUFLLEVBQUUsRUFGd0I7QUFHL0IsZ0JBQUEsTUFBTSxFQUFFO0FBSHVCLGVBRGtDO0FBTzdELGNBQUEsTUFQNkQsR0FPbkM7QUFDOUIsZ0JBQUEsSUFBSSxFQUFFLHNCQUFTLFVBRGU7QUFFOUIsZ0JBQUEsV0FBVyxFQUFYO0FBRjhCLGVBUG1DO0FBWTdELGNBQUEsZ0JBWjZELEdBWTFDLElBQUksa0NBQUosQ0FBaUMsY0FBRyxNQUFILENBQWpDLENBWjBDO0FBYTdELGNBQUEsTUFiNkQsR0FhcEQsMEJBQWMsZ0JBQWQsRUFBZ0MsS0FBaEMsQ0Fib0Q7QUFBQTtBQWNuRCxxQkFBTSxNQUFNLENBQUMsU0FBUCxFQUFOOztBQWRtRDtBQWM3RCxjQUFBLE9BZDZEO0FBZW5FLGNBQUEsTUFBTSxDQUFDLE9BQUQsQ0FBTixDQUFnQixPQUFoQixDQUF3QjtBQUN0QixnQkFBQSxJQUFJLEVBQUUsc0JBQVM7QUFETyxlQUF4Qjs7QUFmbUU7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsS0FBQSxFQUFYO0FBQUEsR0FBeEQsQ0FBRjtBQW9CQSxFQUFBLEVBQUUsaUVBQWlFO0FBQUEsV0FBVyxTQUFBLENBQUEsS0FBQSxFQUFBLEtBQUEsQ0FBQSxFQUFBLEtBQUEsQ0FBQSw0QkFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFDdEUsY0FBQSxNQURzRSxHQUN4QztBQUNsQyxnQkFBQSxJQUFJLEVBQUUsc0JBQVM7QUFEbUIsZUFEd0M7QUFLdEUsY0FBQSxnQkFMc0UsR0FLbkQsSUFBSSxrQ0FBSixDQUFpQyxjQUFHLE1BQUgsQ0FBakMsQ0FMbUQ7QUFNdEUsY0FBQSxNQU5zRSxHQU03RCwyQkFBZSxnQkFBZixDQU42RDtBQUFBO0FBTzVELHFCQUFNLE1BQU0sQ0FBQyxTQUFQLEVBQU47O0FBUDREO0FBT3RFLGNBQUEsT0FQc0U7QUFRNUUsY0FBQSxNQUFNLENBQUMsT0FBRCxDQUFOLENBQWdCLE9BQWhCLENBQXdCO0FBQ3RCLGdCQUFBLElBQUksRUFBRSxzQkFBUyxVQURPO0FBRXRCLGdCQUFBLEtBQUssRUFBRSxpQkFGZTtBQUd0QixnQkFBQSxPQUFPLEVBQUU7QUFIYSxlQUF4Qjs7QUFSNEU7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsS0FBQSxFQUFYO0FBQUEsR0FBakUsQ0FBRjtBQWNELENBaEVPLENBQVIiLCJzb3VyY2VSb290IjoiIn0=

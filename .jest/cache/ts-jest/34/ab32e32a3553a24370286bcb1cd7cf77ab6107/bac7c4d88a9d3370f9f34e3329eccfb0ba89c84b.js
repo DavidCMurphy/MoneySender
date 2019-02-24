@@ -1,0 +1,44 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const Epics_1 = __importDefault(require("../Send/Epics"));
+const redux_observable_1 = require("redux-observable");
+const ActionTypes_1 = require("../ActionTypes");
+const rxjs_1 = require("rxjs");
+describe('Form validation shoudl function correctly', () => {
+    // mock the store
+    const store = {
+        value: {
+            account: {
+                totalAvailable: 1000,
+                totalSent: 0
+            }
+        }
+    };
+    it(``, () => __awaiter(this, void 0, void 0, function* () {
+        const transaction = {
+            name: '',
+            email: '',
+            amount: '0'
+        };
+        const action = {
+            type: ActionTypes_1.TypeKeys.SEND_MONEY,
+            transaction
+        };
+        const actionObservable = new redux_observable_1.ActionsObservable(rxjs_1.of(action));
+        const result = Epics_1.default(actionObservable, store);
+        const actions = yield result.toPromise();
+        expect(actions).toEqual({ type: ActionTypes_1.TypeKeys.SEND_MONEY_SUCCESS, transaction });
+    }));
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2RhdmlkbXVycGh5L0Rlc2t0b3AvTW9uZXlTZW5kZXIvc3JjL19fdGVzdHNfXy9Gb3JtRXBpY1Rlc3RzLnRzeCIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7O0FBRVEsMERBQW9DO0FBRXBDLHVEQUFvRDtBQUNwRCxnREFBeUM7QUFDekMsK0JBQXlCO0FBR3pCLFFBQVEsQ0FBQywyQ0FBMkMsRUFBRSxHQUFHLEVBQUU7SUFFdkQsaUJBQWlCO0lBQ2pCLE1BQU0sS0FBSyxHQUFHO1FBQ1YsS0FBSyxFQUFFO1lBQ0gsT0FBTyxFQUFFO2dCQUNMLGNBQWMsRUFBRSxJQUFJO2dCQUNwQixTQUFTLEVBQUUsQ0FBQzthQUNmO1NBQ0o7S0FDSixDQUFBO0lBRUQsRUFBRSxDQUFDLEVBQUUsRUFBRSxHQUFTLEVBQUU7UUFDZCxNQUFNLFdBQVcsR0FBZ0I7WUFDekIsSUFBSSxFQUFFLEVBQUU7WUFDUixLQUFLLEVBQUUsRUFBRTtZQUNULE1BQU0sRUFBRSxHQUFHO1NBQ2xCLENBQUE7UUFFRCxNQUFNLE1BQU0sR0FBb0I7WUFDNUIsSUFBSSxFQUFFLHNCQUFRLENBQUMsVUFBVTtZQUN6QixXQUFXO1NBQ2QsQ0FBQTtRQUVELE1BQU0sZ0JBQWdCLEdBQUcsSUFBSSxvQ0FBaUIsQ0FBWSxTQUFFLENBQUUsTUFBTSxDQUFFLENBQUMsQ0FBQTtRQUN2RSxNQUFNLE1BQU0sR0FBRyxlQUFRLENBQUMsZ0JBQWdCLEVBQUUsS0FBWSxDQUFFLENBQUE7UUFDeEQsTUFBTSxPQUFPLEdBQUcsTUFBTSxNQUFNLENBQUMsU0FBUyxFQUFFLENBQUE7UUFFeEMsTUFBTSxDQUFFLE9BQU8sQ0FBRSxDQUFDLE9BQU8sQ0FBQyxFQUFFLElBQUksRUFBRSxzQkFBUSxDQUFDLGtCQUFrQixFQUFFLFdBQVcsRUFBRSxDQUFDLENBQUE7SUFDakYsQ0FBQyxDQUFBLENBQUMsQ0FBQTtBQUNKLENBQUMsQ0FBQyxDQUFBIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9Vc2Vycy9kYXZpZG11cnBoeS9EZXNrdG9wL01vbmV5U2VuZGVyL3NyYy9fX3Rlc3RzX18vRm9ybUVwaWNUZXN0cy50c3giXSwic291cmNlc0NvbnRlbnQiOlsiXG5cbiAgICAgICAgaW1wb3J0IFNlbmRFcGljIGZyb20gJy4uL1NlbmQvRXBpY3MnXG4gICAgICAgIGltcG9ydCB7IFNlbmRNb25leUFjdGlvbiwgVHJhbnNhY3Rpb24gfSBmcm9tICcuLi9TZW5kL1JlZHVjZXJzJ1xuICAgICAgICBpbXBvcnQgeyBBY3Rpb25zT2JzZXJ2YWJsZSB9IGZyb20gJ3JlZHV4LW9ic2VydmFibGUnXG4gICAgICAgIGltcG9ydCB7IFR5cGVLZXlzIH0gZnJvbSAnLi4vQWN0aW9uVHlwZXMnXG4gICAgICAgIGltcG9ydCB7IG9mIH0gZnJvbSAncnhqcydcbmltcG9ydCB7IEFueUFjdGlvbiB9IGZyb20gJ3JlZHV4JztcblxuICAgICAgICBkZXNjcmliZSgnRm9ybSB2YWxpZGF0aW9uIHNob3VkbCBmdW5jdGlvbiBjb3JyZWN0bHknLCAoKSA9PiB7XG5cbiAgICAgICAgICAgIC8vIG1vY2sgdGhlIHN0b3JlXG4gICAgICAgICAgICBjb25zdCBzdG9yZSA9IHtcbiAgICAgICAgICAgICAgICB2YWx1ZToge1xuICAgICAgICAgICAgICAgICAgICBhY2NvdW50OiB7XG4gICAgICAgICAgICAgICAgICAgICAgICB0b3RhbEF2YWlsYWJsZTogMTAwMCxcbiAgICAgICAgICAgICAgICAgICAgICAgIHRvdGFsU2VudDogMFxuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICBpdChgYCwgYXN5bmMgKCkgPT4ge1xuICAgICAgICAgICAgICAgIGNvbnN0IHRyYW5zYWN0aW9uOiBUcmFuc2FjdGlvbiA9IHtcbiAgICAgICAgICAgICAgICAgICAgICAgIG5hbWU6ICcnLFxuICAgICAgICAgICAgICAgICAgICAgICAgZW1haWw6ICcnLFxuICAgICAgICAgICAgICAgICAgICAgICAgYW1vdW50OiAnMCdcbiAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICBjb25zdCBhY3Rpb246IFNlbmRNb25leUFjdGlvbiA9IHtcbiAgICAgICAgICAgICAgICAgICAgdHlwZTogVHlwZUtleXMuU0VORF9NT05FWSxcbiAgICAgICAgICAgICAgICAgICAgdHJhbnNhY3Rpb25cbiAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICBjb25zdCBhY3Rpb25PYnNlcnZhYmxlID0gbmV3IEFjdGlvbnNPYnNlcnZhYmxlPEFueUFjdGlvbj4ob2YoIGFjdGlvbiApKVxuICAgICAgICAgICAgICAgIGNvbnN0IHJlc3VsdCA9IFNlbmRFcGljKGFjdGlvbk9ic2VydmFibGUsIHN0b3JlIGFzIGFueSApXG4gICAgICAgICAgICAgICAgY29uc3QgYWN0aW9ucyA9IGF3YWl0IHJlc3VsdC50b1Byb21pc2UoKVxuXG4gICAgICAgICAgICAgICAgZXhwZWN0KCBhY3Rpb25zICkudG9FcXVhbCh7IHR5cGU6IFR5cGVLZXlzLlNFTkRfTU9ORVlfU1VDQ0VTUywgdHJhbnNhY3Rpb24gfSlcbiAgICAgICAgICAgIH0pXG4gICAgICAgICAgfSkiXSwidmVyc2lvbiI6M30=

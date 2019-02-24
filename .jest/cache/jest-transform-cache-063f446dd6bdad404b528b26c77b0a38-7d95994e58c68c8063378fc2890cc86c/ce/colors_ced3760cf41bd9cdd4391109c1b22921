@@ -1,0 +1,15 @@
+6250396236de9c2551c2a2935799a005
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.colors = void 0;
+var colors = {
+  title: '#1c2139',
+  lightText: '#4a4a4a',
+  red: '#d0021b',
+  blue: '#4b3cfa',
+  lightGrey: '#d6d7de',
+  orange: '#ffb428'
+};
+exports.colors = colors;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9UaGVtZXMvY29sb3JzLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQU8sSUFBTSxNQUFNLEdBQUc7QUFDbEIsRUFBQSxLQUFLLEVBQUUsU0FEVztBQUVsQixFQUFBLFNBQVMsRUFBRSxTQUZPO0FBR2xCLEVBQUEsR0FBRyxFQUFFLFNBSGE7QUFJbEIsRUFBQSxJQUFJLEVBQUUsU0FKWTtBQUtsQixFQUFBLFNBQVMsRUFBRSxTQUxPO0FBTWxCLEVBQUEsTUFBTSxFQUFFO0FBTlUsQ0FBZiIsInNvdXJjZVJvb3QiOiIifQ==

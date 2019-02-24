@@ -1,0 +1,64 @@
+e9256e7cb05820409e297cf0ce4b0ce0
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+require("react-native");
+
+var _Reducers = _interopRequireWildcard(require("../Account/Reducers"));
+
+var _Reducers2 = _interopRequireWildcard(require("../Send/Reducers"));
+
+var _ActionTypes = require("../ActionTypes");
+
+var transaction = {
+  name: "David",
+  email: "David.conor.m@gmail.com",
+  amount: "100"
+};
+describe("Account reducer should function correctly", function () {
+  it("should add a transaction to our list", function () {
+    var account = (0, _Reducers.default)((0, _Reducers.defaultAccountState)(), {
+      type: _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS,
+      transaction: transaction
+    });
+    expect(account.transations).toEqual([transaction]);
+  });
+  it("should add ammount to our send total", function () {
+    var state = (0, _Reducers.defaultAccountState)();
+    var account = (0, _Reducers.default)(state, {
+      type: _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS,
+      transaction: transaction
+    });
+    expect(account.totalSent).toEqual(state.totalSent + +transaction.amount);
+  });
+  it("should remove ammount from out total", function () {
+    var state = (0, _Reducers.defaultAccountState)();
+    var account = (0, _Reducers.default)(state, {
+      type: _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS,
+      transaction: transaction
+    });
+    expect(account.totalAvailable).toEqual(state.totalAvailable - +transaction.amount);
+  });
+});
+describe("ASend reducer should function correctly", function () {
+  it("should stop loading on success", function () {
+    var send = (0, _Reducers2.default)((0, _Reducers2.defaultSendState)(), {
+      type: _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS,
+      transaction: transaction
+    });
+    expect(send.loading).toEqual(false);
+  });
+  it("should start loading on send", function () {
+    var send = (0, _Reducers2.default)((0, _Reducers2.defaultSendState)(), {
+      type: _ActionTypes.TypeKeys.SEND_MONEY,
+      transaction: transaction
+    });
+    expect(send.loading).toEqual(true);
+  });
+  it("should stop loading on fail", function () {
+    var send = (0, _Reducers2.default)((0, _Reducers2.defaultSendState)(), {
+      type: _ActionTypes.TypeKeys.SEND_MONEY_FAIL
+    });
+    expect(send.loading).toEqual(false);
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9fX3Rlc3RzX18vRm9ybVJlZHVjZXJUZXN0cy50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFFQSxJQUFNLFdBQVcsR0FBRztBQUNsQixFQUFBLElBQUksRUFBRSxPQURZO0FBRWxCLEVBQUEsS0FBSyxFQUFFLHlCQUZXO0FBR2xCLEVBQUEsTUFBTSxFQUFFO0FBSFUsQ0FBcEI7QUFNQSxRQUFRLENBQUMsMkNBQUQsRUFBOEMsWUFBSztBQUN6RCxFQUFBLEVBQUUsQ0FBQyxzQ0FBRCxFQUF5QyxZQUFLO0FBQzlDLFFBQU0sT0FBTyxHQUFHLHVCQUFlLG9DQUFmLEVBQXNDO0FBQ3BELE1BQUEsSUFBSSxFQUFFLHNCQUFTLGtCQURxQztBQUVwRCxNQUFBLFdBQVcsRUFBWDtBQUZvRCxLQUF0QyxDQUFoQjtBQUlBLElBQUEsTUFBTSxDQUFDLE9BQU8sQ0FBQyxXQUFULENBQU4sQ0FBNEIsT0FBNUIsQ0FBb0MsQ0FBQyxXQUFELENBQXBDO0FBQ0QsR0FOQyxDQUFGO0FBUUEsRUFBQSxFQUFFLENBQUMsc0NBQUQsRUFBeUMsWUFBSztBQUM5QyxRQUFNLEtBQUssR0FBRyxvQ0FBZDtBQUNBLFFBQU0sT0FBTyxHQUFHLHVCQUFlLEtBQWYsRUFBc0I7QUFDcEMsTUFBQSxJQUFJLEVBQUUsc0JBQVMsa0JBRHFCO0FBRXBDLE1BQUEsV0FBVyxFQUFYO0FBRm9DLEtBQXRCLENBQWhCO0FBSUEsSUFBQSxNQUFNLENBQUMsT0FBTyxDQUFDLFNBQVQsQ0FBTixDQUEwQixPQUExQixDQUFrQyxLQUFLLENBQUMsU0FBTixHQUFrQixDQUFDLFdBQVcsQ0FBQyxNQUFqRTtBQUNELEdBUEMsQ0FBRjtBQVNBLEVBQUEsRUFBRSxDQUFDLHNDQUFELEVBQXlDLFlBQUs7QUFDOUMsUUFBTSxLQUFLLEdBQUcsb0NBQWQ7QUFDQSxRQUFNLE9BQU8sR0FBRyx1QkFBZSxLQUFmLEVBQXNCO0FBQ3BDLE1BQUEsSUFBSSxFQUFFLHNCQUFTLGtCQURxQjtBQUVwQyxNQUFBLFdBQVcsRUFBWDtBQUZvQyxLQUF0QixDQUFoQjtBQUlBLElBQUEsTUFBTSxDQUFDLE9BQU8sQ0FBQyxjQUFULENBQU4sQ0FBK0IsT0FBL0IsQ0FDRSxLQUFLLENBQUMsY0FBTixHQUF1QixDQUFDLFdBQVcsQ0FBQyxNQUR0QztBQUdELEdBVEMsQ0FBRjtBQVVELENBNUJPLENBQVI7QUE4QkEsUUFBUSxDQUFDLHlDQUFELEVBQTRDLFlBQUs7QUFDdkQsRUFBQSxFQUFFLENBQUMsZ0NBQUQsRUFBbUMsWUFBSztBQUN4QyxRQUFNLElBQUksR0FBRyx3QkFBWSxrQ0FBWixFQUFnQztBQUMzQyxNQUFBLElBQUksRUFBRSxzQkFBUyxrQkFENEI7QUFFM0MsTUFBQSxXQUFXLEVBQVg7QUFGMkMsS0FBaEMsQ0FBYjtBQUlBLElBQUEsTUFBTSxDQUFDLElBQUksQ0FBQyxPQUFOLENBQU4sQ0FBcUIsT0FBckIsQ0FBNkIsS0FBN0I7QUFDRCxHQU5DLENBQUY7QUFRQSxFQUFBLEVBQUUsQ0FBQyw4QkFBRCxFQUFpQyxZQUFLO0FBQ3RDLFFBQU0sSUFBSSxHQUFHLHdCQUFZLGtDQUFaLEVBQWdDO0FBQzNDLE1BQUEsSUFBSSxFQUFFLHNCQUFTLFVBRDRCO0FBRTNDLE1BQUEsV0FBVyxFQUFYO0FBRjJDLEtBQWhDLENBQWI7QUFJQSxJQUFBLE1BQU0sQ0FBQyxJQUFJLENBQUMsT0FBTixDQUFOLENBQXFCLE9BQXJCLENBQTZCLElBQTdCO0FBQ0QsR0FOQyxDQUFGO0FBUUEsRUFBQSxFQUFFLENBQUMsNkJBQUQsRUFBZ0MsWUFBSztBQUNyQyxRQUFNLElBQUksR0FBRyx3QkFBWSxrQ0FBWixFQUFnQztBQUMzQyxNQUFBLElBQUksRUFBRSxzQkFBUztBQUQ0QixLQUFoQyxDQUFiO0FBR0EsSUFBQSxNQUFNLENBQUMsSUFBSSxDQUFDLE9BQU4sQ0FBTixDQUFxQixPQUFyQixDQUE2QixLQUE3QjtBQUNELEdBTEMsQ0FBRjtBQU1ELENBdkJPLENBQVIiLCJzb3VyY2VSb290IjoiIn0=

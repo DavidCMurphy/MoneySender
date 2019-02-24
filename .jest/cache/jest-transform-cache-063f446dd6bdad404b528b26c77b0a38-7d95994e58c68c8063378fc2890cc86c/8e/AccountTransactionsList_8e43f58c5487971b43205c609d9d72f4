@@ -1,0 +1,66 @@
+33c43c17fde58eaf4c38f47a0d6325cb
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _taggedTemplateLiteralLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/taggedTemplateLiteralLoose"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactNative = require("react-native");
+
+var _reactRedux = require("react-redux");
+
+var _colors = require("../Themes/colors");
+
+var _native = _interopRequireDefault(require("styled-components/native"));
+
+var _TransactionItem = _interopRequireDefault(require("./TransactionItem"));
+
+function _templateObject() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n  font-weight: bold;\n  font-size: 16px;\n  font-family: Alverata;\n  color: ", ";\n  margin-bottom: 20px;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var TransactionsListTitle = _native.default.Text(_templateObject(), _colors.colors.title);
+
+var AccountTransactionsList = function AccountTransactionsList(props) {
+  return _react.default.createElement(_reactNative.View, {
+    style: {
+      flex: 1
+    }
+  }, _react.default.createElement(TransactionsListTitle, null, "Transactions"), _react.default.createElement(_reactNative.FlatList, {
+    style: {
+      flex: 1
+    },
+    data: props.transactions,
+    renderItem: function renderItem(_ref) {
+      var item = _ref.item;
+      return _react.default.createElement(_TransactionItem.default, (0, _extends2.default)({}, item));
+    },
+    keyExtractor: function keyExtractor(_, index) {
+      return String(index);
+    }
+  }));
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    transactions: state.account.transations
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(AccountTransactionsList);
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9BY2NvdW50L0FjY291bnRUcmFuc2FjdGlvbnNMaXN0LnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7OztBQUFBOztBQUNBOztBQUNBOztBQUVBOztBQUVBOztBQUNBOzs7Ozs7Ozs7Ozs7QUFFQSxJQUFNLHFCQUFxQixHQUFHLGdCQUFPLElBQVYsb0JBSWhCLGVBQU8sS0FKUyxDQUEzQjs7QUFZQSxJQUFNLHVCQUF1QixHQUFHLFNBQTFCLHVCQUEwQixDQUFDLEtBQUQsRUFBZ0M7QUFDOUQsU0FDRSxlQUFBLGFBQUEsQ0FBQyxpQkFBRCxFQUFLO0FBQUMsSUFBQSxLQUFLLEVBQUU7QUFBRSxNQUFBLElBQUksRUFBRTtBQUFSO0FBQVIsR0FBTCxFQUNFLGVBQUEsYUFBQSxDQUFDLHFCQUFELEVBQXNCLElBQXRCLEVBQXNCLGNBQXRCLENBREYsRUFFRSxlQUFBLGFBQUEsQ0FBQyxxQkFBRCxFQUFTO0FBQ1AsSUFBQSxLQUFLLEVBQUU7QUFBRSxNQUFBLElBQUksRUFBRTtBQUFSLEtBREE7QUFFUCxJQUFBLElBQUksRUFBRSxLQUFLLENBQUMsWUFGTDtBQUdQLElBQUEsVUFBVSxFQUFFO0FBQUEsVUFBRyxJQUFILFFBQUcsSUFBSDtBQUFBLGFBQWMsZUFBQSxhQUFBLENBQUMsd0JBQUQsRUFBZ0IsdUJBQUEsRUFBQSxFQUFLLElBQUwsQ0FBaEIsQ0FBZDtBQUFBLEtBSEw7QUFJUCxJQUFBLFlBQVksRUFBRSxzQkFBQyxDQUFELEVBQUksS0FBSjtBQUFBLGFBQWMsTUFBTSxDQUFDLEtBQUQsQ0FBcEI7QUFBQTtBQUpQLEdBQVQsQ0FGRixDQURGO0FBV0QsQ0FaRDs7QUFjQSxJQUFNLGVBQWUsR0FBRyxTQUFsQixlQUFrQixDQUFDLEtBQUQ7QUFBQSxTQUF5QztBQUMvRCxJQUFBLFlBQVksRUFBRSxLQUFLLENBQUMsT0FBTixDQUFjO0FBRG1DLEdBQXpDO0FBQUEsQ0FBeEI7O2VBSWUseUJBQVEsZUFBUixFQUF5Qix1QkFBekIsQyIsInNvdXJjZVJvb3QiOiIifQ==

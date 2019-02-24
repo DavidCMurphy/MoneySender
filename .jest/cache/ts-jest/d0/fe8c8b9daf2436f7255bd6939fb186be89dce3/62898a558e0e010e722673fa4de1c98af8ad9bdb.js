@@ -1,0 +1,42 @@
+"use strict";
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ * @lint-ignore-every XPLATJSCOPYRIGHT1
+ */
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importDefault(require("react"));
+const redux_1 = require("redux");
+const Epics_1 = __importDefault(require("./Send/Epics"));
+const Reducers_1 = __importDefault(require("./Send/Reducers"));
+const Error_1 = __importDefault(require("./Error"));
+const Reducers_2 = __importDefault(require("./Account/Reducers"));
+const redux_logger_1 = __importDefault(require("redux-logger"));
+const redux_observable_1 = require("redux-observable");
+const react_native_1 = require("react-native");
+const SendFormComponent_1 = __importDefault(require("./Send/SendFormComponent"));
+const AccountDetailsComponent_1 = __importDefault(require("./Account/AccountDetailsComponent"));
+const colors_1 = require("./Themes/colors");
+const react_redux_1 = require("react-redux");
+exports.currency = "£";
+const rootEpic = redux_observable_1.combineEpics(Epics_1.default, Error_1.default);
+const rootReducer = redux_1.combineReducers({ send: Reducers_1.default, account: Reducers_2.default });
+const epicMiddleware = redux_observable_1.createEpicMiddleware();
+const combination = (__DEV__) ? redux_1.compose(redux_1.applyMiddleware(epicMiddleware, redux_logger_1.default)) : redux_1.applyMiddleware(epicMiddleware);
+const store = redux_1.createStore(rootReducer, combination);
+epicMiddleware.run(rootEpic);
+exports.default = () => {
+    return react_1.default.createElement(react_redux_1.Provider, { store: store },
+        react_1.default.createElement(react_native_1.View, { style: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' } },
+            react_1.default.createElement(react_native_1.View, { style: { width: '100%', height: '80%', flexDirection: 'row' } },
+                react_1.default.createElement(SendFormComponent_1.default, null),
+                react_1.default.createElement(react_native_1.View, { style: { height: '100%', width: 1, backgroundColor: colors_1.colors.lightGrey } }),
+                react_1.default.createElement(AccountDetailsComponent_1.default, null))));
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2RhdmlkbXVycGh5L0Rlc2t0b3AvTW9uZXlTZW5kZXIvc3JjL0FwcC50c3giLCJtYXBwaW5ncyI6IjtBQUFBOzs7Ozs7O0dBT0c7Ozs7O0FBRUgsa0RBQTBCO0FBQzFCLGlDQUFxRjtBQUNyRix5REFBbUM7QUFDbkMsK0RBQWlEO0FBQ2pELG9EQUErQjtBQUMvQixrRUFBMEQ7QUFDMUQsZ0VBQWlDO0FBQ2pDLHVEQUFxRTtBQUNyRSwrQ0FBbUM7QUFDbkMsaUZBQXdEO0FBQ3hELGdHQUF1RTtBQUN2RSw0Q0FBd0M7QUFDeEMsNkNBQXNDO0FBRXpCLFFBQUEsUUFBUSxHQUFHLEdBQUcsQ0FBQTtBQU8zQixNQUFNLFFBQVEsR0FBRywrQkFBWSxDQUFFLGVBQVEsRUFBRSxlQUFTLENBQUUsQ0FBQTtBQUNwRCxNQUFNLFdBQVcsR0FBRyx1QkFBZSxDQUFDLEVBQUUsSUFBSSxFQUFKLGtCQUFJLEVBQUUsT0FBTyxFQUFQLGtCQUFPLEVBQUUsQ0FBQyxDQUFBO0FBQ3RELE1BQU0sY0FBYyxHQUFHLHVDQUFvQixFQUFFLENBQUE7QUFDN0MsTUFBTSxXQUFXLEdBQUcsQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFDLENBQUMsZUFBTyxDQUFFLHVCQUFlLENBQUUsY0FBYyxFQUFFLHNCQUFNLENBQUUsQ0FBRSxDQUFDLENBQUMsQ0FBQyx1QkFBZSxDQUFFLGNBQWMsQ0FBRSxDQUFBO0FBQ3hILE1BQU0sS0FBSyxHQUFpQixtQkFBVyxDQUFDLFdBQVcsRUFBRSxXQUFXLENBQUMsQ0FBQTtBQUNqRSxjQUFjLENBQUMsR0FBRyxDQUFFLFFBQVEsQ0FBRSxDQUFBO0FBRTlCLGtCQUFlLEdBQUcsRUFBRTtJQUNsQixPQUFPLDhCQUFDLHNCQUFRLElBQUMsS0FBSyxFQUFFLEtBQUs7UUFDN0IsOEJBQUMsbUJBQUksSUFBQyxLQUFLLEVBQUUsRUFBRSxJQUFJLEVBQUUsQ0FBQyxFQUFFLFVBQVUsRUFBRSxRQUFRLEVBQUUsY0FBYyxFQUFFLFFBQVEsRUFBRSxlQUFlLEVBQUUsT0FBTyxFQUFFO1lBQ2hHLDhCQUFDLG1CQUFJLElBQUMsS0FBSyxFQUFFLEVBQUUsS0FBSyxFQUFFLE1BQU0sRUFBRSxNQUFNLEVBQUUsS0FBSyxFQUFFLGFBQWEsRUFBRSxLQUFLLEVBQUU7Z0JBQ25FLDhCQUFDLDJCQUFpQixPQUFHO2dCQUNyQiw4QkFBQyxtQkFBSSxJQUFDLEtBQUssRUFBRSxFQUFFLE1BQU0sRUFBRSxNQUFNLEVBQUUsS0FBSyxFQUFFLENBQUMsRUFBRSxlQUFlLEVBQUUsZUFBTSxDQUFDLFNBQVMsRUFBRSxHQUFJO2dCQUNoRiw4QkFBQyxpQ0FBdUIsT0FBRyxDQUNwQixDQUNELENBQ0ksQ0FBQTtBQUNkLENBQUMsQ0FBQSIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZGF2aWRtdXJwaHkvRGVza3RvcC9Nb25leVNlbmRlci9zcmMvQXBwLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIFNhbXBsZSBSZWFjdCBOYXRpdmUgQXBwXG4gKiBodHRwczovL2dpdGh1Yi5jb20vZmFjZWJvb2svcmVhY3QtbmF0aXZlXG4gKlxuICogQGZvcm1hdFxuICogQGZsb3dcbiAqIEBsaW50LWlnbm9yZS1ldmVyeSBYUExBVEpTQ09QWVJJR0hUMVxuICovXG5cbmltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBjcmVhdGVTdG9yZSwgYXBwbHlNaWRkbGV3YXJlLCBjb21wb3NlLCBTdG9yZSwgY29tYmluZVJlZHVjZXJzIH0gZnJvbSAncmVkdXgnXG5pbXBvcnQgU2VuZEVwaWMgZnJvbSAnLi9TZW5kL0VwaWNzJ1xuaW1wb3J0IHNlbmQsIHsgU2VuZFN0YXRlIH0gZnJvbSAnLi9TZW5kL1JlZHVjZXJzJ1xuaW1wb3J0IEVycm9yRXBpYyBmcm9tICcuL0Vycm9yJ1xuaW1wb3J0IGFjY291bnQsIHsgQWNjb3VudFN0YXRlIH0gZnJvbSAnLi9BY2NvdW50L1JlZHVjZXJzJ1xuaW1wb3J0IGxvZ2dlciBmcm9tICdyZWR1eC1sb2dnZXInXG5pbXBvcnQgeyBjcmVhdGVFcGljTWlkZGxld2FyZSwgY29tYmluZUVwaWNzIH0gZnJvbSAncmVkdXgtb2JzZXJ2YWJsZSdcbmltcG9ydCB7IFZpZXcgfSBmcm9tICdyZWFjdC1uYXRpdmUnXG5pbXBvcnQgU2VuZEZvcm1Db21wb25lbnQgZnJvbSAnLi9TZW5kL1NlbmRGb3JtQ29tcG9uZW50J1xuaW1wb3J0IEFjY291bnREZXRhaWxzQ29tcG9uZW50IGZyb20gJy4vQWNjb3VudC9BY2NvdW50RGV0YWlsc0NvbXBvbmVudCdcbmltcG9ydCB7IGNvbG9ycyB9IGZyb20gJy4vVGhlbWVzL2NvbG9ycydcbmltcG9ydCB7IFByb3ZpZGVyIH0gZnJvbSAncmVhY3QtcmVkdXgnXG5cbmV4cG9ydCBjb25zdCBjdXJyZW5jeSA9IFwiwqNcIlxuXG5leHBvcnQgaW50ZXJmYWNlIFN0YXRlIHtcbiAgYWNjb3VudDogQWNjb3VudFN0YXRlXG4gIHNlbmQ6IFNlbmRTdGF0ZVxufVxuXG5jb25zdCByb290RXBpYyA9IGNvbWJpbmVFcGljcyggU2VuZEVwaWMsIEVycm9yRXBpYyApXG5jb25zdCByb290UmVkdWNlciA9IGNvbWJpbmVSZWR1Y2Vycyh7IHNlbmQsIGFjY291bnQgfSlcbmNvbnN0IGVwaWNNaWRkbGV3YXJlID0gY3JlYXRlRXBpY01pZGRsZXdhcmUoKVxuY29uc3QgY29tYmluYXRpb24gPSAoX19ERVZfXykgPyBjb21wb3NlKCBhcHBseU1pZGRsZXdhcmUoIGVwaWNNaWRkbGV3YXJlLCBsb2dnZXIgKSApIDogYXBwbHlNaWRkbGV3YXJlKCBlcGljTWlkZGxld2FyZSApXG5jb25zdCBzdG9yZTogU3RvcmU8U3RhdGU+ID0gY3JlYXRlU3RvcmUocm9vdFJlZHVjZXIsIGNvbWJpbmF0aW9uKVxuZXBpY01pZGRsZXdhcmUucnVuKCByb290RXBpYyApXG5cbmV4cG9ydCBkZWZhdWx0ICgpID0+IHtcbiAgcmV0dXJuIDxQcm92aWRlciBzdG9yZT17c3RvcmV9PlxuICA8VmlldyBzdHlsZT17eyBmbGV4OiAxLCBhbGlnbkl0ZW1zOiAnY2VudGVyJywganVzdGlmeUNvbnRlbnQ6ICdjZW50ZXInLCBiYWNrZ3JvdW5kQ29sb3I6ICd3aGl0ZScgfX0+XG4gICAgPFZpZXcgc3R5bGU9e3sgd2lkdGg6ICcxMDAlJywgaGVpZ2h0OiAnODAlJywgZmxleERpcmVjdGlvbjogJ3JvdycgfX0+XG4gICAgPFNlbmRGb3JtQ29tcG9uZW50IC8+XG4gICAgPFZpZXcgc3R5bGU9e3sgaGVpZ2h0OiAnMTAwJScsIHdpZHRoOiAxLCBiYWNrZ3JvdW5kQ29sb3I6IGNvbG9ycy5saWdodEdyZXkgfX0gLz5cbiAgICA8QWNjb3VudERldGFpbHNDb21wb25lbnQgLz5cbiAgICA8L1ZpZXc+XG4gIDwvIFZpZXc+XG4gIDwvIFByb3ZpZGVyPlxufVxuIl0sInZlcnNpb24iOjN9

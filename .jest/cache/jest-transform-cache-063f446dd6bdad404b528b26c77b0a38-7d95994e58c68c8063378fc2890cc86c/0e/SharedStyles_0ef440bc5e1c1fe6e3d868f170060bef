@@ -1,0 +1,56 @@
+885b9b2791f74f8764d75983d0d2b1cd
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.InnerContainer = exports.Container = exports.SectionTitle = void 0;
+
+var _taggedTemplateLiteralLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/taggedTemplateLiteralLoose"));
+
+var _native = _interopRequireDefault(require("styled-components/native"));
+
+var _colors = require("./colors");
+
+function _templateObject3() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n    width: 70%;\n    height: 100%;\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n    flex: 1\n    align-items: center;\n    justify-content: center;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n    font-size: 32px;\n    font-family: Alverata;\n    color: ", ";\n    margin-top: 10px;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var SectionTitle = _native.default.Text(_templateObject(), _colors.colors.title);
+
+exports.SectionTitle = SectionTitle;
+
+var Container = _native.default.View(_templateObject2());
+
+exports.Container = Container;
+
+var InnerContainer = _native.default.View(_templateObject3());
+
+exports.InnerContainer = InnerContainer;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9UaGVtZXMvU2hhcmVkU3R5bGVzLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBQTs7QUFDQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFFTyxJQUFNLFlBQVksR0FBRyxnQkFBTyxJQUFWLG9CQUdYLGVBQU8sS0FISSxDQUFsQjs7OztBQU9BLElBQU0sU0FBUyxHQUFHLGdCQUFPLElBQVYsb0JBQWY7Ozs7QUFLQSxJQUFNLGNBQWMsR0FBRyxnQkFBTyxJQUFWLG9CQUFwQiIsInNvdXJjZVJvb3QiOiIifQ==

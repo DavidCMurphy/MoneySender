@@ -1,0 +1,57 @@
+c7f35135d7dcd5f26c915f57082393c2
+"use strict";var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");require("react-native");
+var _Reducers = _interopRequireWildcard(require("../Account/Reducers"));
+var _Reducers2 = _interopRequireWildcard(require("../Send/Reducers"));
+var _ActionTypes = require("../ActionTypes");
+var transaction = {
+  name: "David",
+  email: "David.conor.m@gmail.com",
+  amount: "100" };
+
+describe("Account reducer should function correctly", function () {
+  it("should add a transaction to our list", function () {
+    var account = (0, _Reducers.default)((0, _Reducers.defaultAccountState)(), {
+      type: _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS,
+      transaction: transaction });
+
+    expect(account.transations).toEqual([transaction]);
+  });
+  it("should add ammount to our send total", function () {
+    var state = (0, _Reducers.defaultAccountState)();
+    var account = (0, _Reducers.default)(state, {
+      type: _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS,
+      transaction: transaction });
+
+    expect(account.totalSent).toEqual(state.totalSent + +transaction.amount);
+  });
+  it("should remove ammount from out total", function () {
+    var state = (0, _Reducers.defaultAccountState)();
+    var account = (0, _Reducers.default)(state, {
+      type: _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS,
+      transaction: transaction });
+
+    expect(account.totalAvailable).toEqual(state.totalAvailable - +transaction.amount);
+  });
+});
+describe("ASend reducer should function correctly", function () {
+  it("should stop loading on success", function () {
+    var send = (0, _Reducers2.default)((0, _Reducers2.defaultSendState)(), {
+      type: _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS,
+      transaction: transaction });
+
+    expect(send.loading).toEqual(false);
+  });
+  it("should start loading on send", function () {
+    var send = (0, _Reducers2.default)((0, _Reducers2.defaultSendState)(), {
+      type: _ActionTypes.TypeKeys.SEND_MONEY,
+      transaction: transaction });
+
+    expect(send.loading).toEqual(true);
+  });
+  it("should stop loading on fail", function () {
+    var send = (0, _Reducers2.default)((0, _Reducers2.defaultSendState)(), {
+      type: _ActionTypes.TypeKeys.SEND_MONEY_FAIL });
+
+    expect(send.loading).toEqual(false);
+  });
+});

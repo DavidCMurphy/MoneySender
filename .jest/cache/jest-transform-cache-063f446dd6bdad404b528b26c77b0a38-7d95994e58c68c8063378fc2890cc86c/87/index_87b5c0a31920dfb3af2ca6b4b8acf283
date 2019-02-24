@@ -1,0 +1,44 @@
+0bfcfef4802501f2d71cac154833adad
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.defaultAccountState = void 0;
+
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _ActionTypes = require("../../ActionTypes");
+
+var defaultAccountState = function defaultAccountState() {
+  return {
+    totalSent: 0,
+    totalAvailable: 10000,
+    transations: []
+  };
+};
+
+exports.defaultAccountState = defaultAccountState;
+
+var _default = function _default() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultAccountState();
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS:
+      var amount = +action.transaction.amount;
+      return (0, _extends2.default)({}, state, {
+        totalAvailable: state.totalAvailable - amount,
+        totalSent: state.totalSent + amount,
+        transations: [].concat((0, _toConsumableArray2.default)(state.transations), [action.transaction])
+      });
+
+    default:
+      return state;
+  }
+};
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9BY2NvdW50L1JlZHVjZXJzL2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7O0FBQUE7O0FBU08sSUFBTSxtQkFBbUIsR0FBRyxTQUF0QixtQkFBc0I7QUFBQSxTQUFPO0FBQUUsSUFBQSxTQUFTLEVBQUUsQ0FBYjtBQUFnQixJQUFBLGNBQWMsRUFBRSxLQUFoQztBQUF1QyxJQUFBLFdBQVcsRUFBRTtBQUFwRCxHQUFQO0FBQUEsQ0FBNUI7Ozs7ZUFJUSxvQkFDb0I7QUFBQSxNQURuQixLQUNtQix1RUFERyxtQkFBbUIsRUFDdEI7QUFBQSxNQUEvQixNQUErQjs7QUFDL0IsVUFBTyxNQUFNLENBQUMsSUFBZDtBQUNJLFNBQUssc0JBQVMsa0JBQWQ7QUFDSSxVQUFNLE1BQU0sR0FBSSxDQUFDLE1BQU0sQ0FBQyxXQUFQLENBQW1CLE1BQXBDO0FBQ0EsYUFBQSx1QkFBQSxFQUFBLEVBQVksS0FBWixFQUFpQjtBQUNiLFFBQUEsY0FBYyxFQUFFLEtBQUssQ0FBQyxjQUFOLEdBQXVCLE1BRDFCO0FBRWIsUUFBQSxTQUFTLEVBQUUsS0FBSyxDQUFDLFNBQU4sR0FBa0IsTUFGaEI7QUFHYixRQUFBLFdBQVcsNkNBQU8sS0FBSyxDQUFDLFdBQWIsSUFBMEIsTUFBTSxDQUFDLFdBQWpDO0FBSEUsT0FBakIsQ0FBQTs7QUFJSjtBQUNJLGFBQU8sS0FBUDtBQVJSO0FBV0gsQyIsInNvdXJjZVJvb3QiOiIifQ==

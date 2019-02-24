@@ -1,0 +1,22 @@
+767d37ec2260f9f5c17dc47c2d6782fc
+"use strict";require("react-native");
+var _Forms = require("../Send/Forms");
+describe('Form validation shoudl function correctly', function () {
+  it('should validate name successfully', function () {
+    var name = (0, _Forms.nameForm)();
+    expect(name.validation('David')).toEqual(true);
+    expect(name.validation('')).toEqual(false);
+  });
+  it('should validate email successfully', function () {
+    var name = (0, _Forms.emailForm)();
+    expect(name.validation('David.conor.m@gmail.com')).toEqual(true);
+    expect(name.validation('David')).toEqual(false);
+    expect(name.validation('')).toEqual(false);
+  });
+  it('should validate account successfully', function () {
+    var name = (0, _Forms.amountForm)();
+    expect(name.validation('1000')).toEqual(true);
+    expect(name.validation('David')).toEqual(false);
+    expect(name.validation('')).toEqual(false);
+  });
+});

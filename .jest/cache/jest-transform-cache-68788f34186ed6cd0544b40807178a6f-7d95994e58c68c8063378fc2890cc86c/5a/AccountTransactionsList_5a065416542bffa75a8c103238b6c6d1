@@ -1,0 +1,23 @@
+6a08b0d5fed75dab925d973cc9b7fa99
+"use strict";var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));var _taggedTemplateLiteralLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/taggedTemplateLiteralLoose"));var _react = _interopRequireDefault(require("react"));
+var _reactNative = require("react-native");
+var _reactRedux = require("react-redux");
+var _colors = require("../Themes/colors");
+var _native = _interopRequireDefault(require("styled-components/native"));
+var _TransactionItem = _interopRequireDefault(require("./TransactionItem"));function _templateObject() {var data = (0, _taggedTemplateLiteralLoose2.default)(["\n    font-weight: bold;\n    font-size: 16px;\n    font-family: Alverata;\n    color: ", ";\n    margin-bottom: 20PX;\n"]);_templateObject = function _templateObject() {return data;};return data;}
+var TransactionsListTitle = _native.default.Text(_templateObject(),
+
+
+
+_colors.colors.title);
+
+
+var AccountTransactionsList = function AccountTransactionsList(props) {
+  return _react.default.createElement(_reactNative.View, { style: { flex: 1 } },
+  _react.default.createElement(TransactionsListTitle, null, "Transactions"),
+  _react.default.createElement(_reactNative.FlatList, { style: { flex: 1 }, data: props.transactions, renderItem: function renderItem(_ref) {var item = _ref.item;return _react.default.createElement(_TransactionItem.default, (0, _extends2.default)({}, item));}, keyExtractor: function keyExtractor(_, index) {return String(index);} }));
+};
+var mapStateToProps = function mapStateToProps(state) {return {
+    transactions: state.account.transations };};var _default =
+
+(0, _reactRedux.connect)(mapStateToProps)(AccountTransactionsList);exports.default = _default;

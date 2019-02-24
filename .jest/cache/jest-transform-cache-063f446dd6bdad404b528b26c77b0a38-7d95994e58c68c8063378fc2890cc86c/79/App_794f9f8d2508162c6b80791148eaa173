@@ -1,0 +1,73 @@
+b46d53e864543cac0a506ec3e65868b8
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.currency = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _redux = require("redux");
+
+var _Epics = _interopRequireDefault(require("./Send/Epics"));
+
+var _Reducers = _interopRequireDefault(require("./Send/Reducers"));
+
+var _Error = _interopRequireDefault(require("./Error"));
+
+var _Reducers2 = _interopRequireDefault(require("./Account/Reducers"));
+
+var _reduxLogger = _interopRequireDefault(require("redux-logger"));
+
+var _reduxObservable = require("redux-observable");
+
+var _reactNative = require("react-native");
+
+var _SendFormComponent = _interopRequireDefault(require("./Send/SendFormComponent"));
+
+var _AccountDetailsComponent = _interopRequireDefault(require("./Account/AccountDetailsComponent"));
+
+var _colors = require("./Themes/colors");
+
+var _reactRedux = require("react-redux");
+
+var currency = "£";
+exports.currency = currency;
+var rootEpic = (0, _reduxObservable.combineEpics)(_Epics.default, _Error.default);
+var rootReducer = (0, _redux.combineReducers)({
+  send: _Reducers.default,
+  account: _Reducers2.default
+});
+var epicMiddleware = (0, _reduxObservable.createEpicMiddleware)();
+var combination = __DEV__ ? (0, _redux.compose)((0, _redux.applyMiddleware)(epicMiddleware, _reduxLogger.default)) : (0, _redux.applyMiddleware)(epicMiddleware);
+var store = (0, _redux.createStore)(rootReducer, combination);
+epicMiddleware.run(rootEpic);
+
+var _default = function _default() {
+  return _react.default.createElement(_reactRedux.Provider, {
+    store: store
+  }, _react.default.createElement(_reactNative.View, {
+    style: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'white'
+    }
+  }, _react.default.createElement(_reactNative.View, {
+    style: {
+      width: '100%',
+      height: '80%',
+      flexDirection: 'row'
+    }
+  }, _react.default.createElement(_SendFormComponent.default, null), _react.default.createElement(_reactNative.View, {
+    style: {
+      height: '100%',
+      width: 1,
+      backgroundColor: _colors.colors.lightGrey
+    }
+  }), _react.default.createElement(_AccountDetailsComponent.default, null))));
+};
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9BcHAudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFTQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFFTyxJQUFNLFFBQVEsR0FBRyxHQUFqQjs7QUFPUCxJQUFNLFFBQVEsR0FBRyxtQ0FBYyxjQUFkLEVBQXdCLGNBQXhCLENBQWpCO0FBQ0EsSUFBTSxXQUFXLEdBQUcsNEJBQWdCO0FBQUUsRUFBQSxJQUFJLEVBQUosaUJBQUY7QUFBUSxFQUFBLE9BQU8sRUFBUDtBQUFSLENBQWhCLENBQXBCO0FBQ0EsSUFBTSxjQUFjLEdBQUcsNENBQXZCO0FBQ0EsSUFBTSxXQUFXLEdBQUksT0FBRCxHQUFZLG9CQUFTLDRCQUFpQixjQUFqQixFQUFpQyxvQkFBakMsQ0FBVCxDQUFaLEdBQW1FLDRCQUFpQixjQUFqQixDQUF2RjtBQUNBLElBQU0sS0FBSyxHQUFpQix3QkFBWSxXQUFaLEVBQXlCLFdBQXpCLENBQTVCO0FBQ0EsY0FBYyxDQUFDLEdBQWYsQ0FBb0IsUUFBcEI7O2VBRWUsb0JBQUs7QUFDbEIsU0FBTyxlQUFBLGFBQUEsQ0FBQyxvQkFBRCxFQUFTO0FBQUMsSUFBQSxLQUFLLEVBQUU7QUFBUixHQUFULEVBQ1AsZUFBQSxhQUFBLENBQUMsaUJBQUQsRUFBSztBQUFDLElBQUEsS0FBSyxFQUFFO0FBQUUsTUFBQSxJQUFJLEVBQUUsQ0FBUjtBQUFXLE1BQUEsVUFBVSxFQUFFLFFBQXZCO0FBQWlDLE1BQUEsY0FBYyxFQUFFLFFBQWpEO0FBQTJELE1BQUEsZUFBZSxFQUFFO0FBQTVFO0FBQVIsR0FBTCxFQUNFLGVBQUEsYUFBQSxDQUFDLGlCQUFELEVBQUs7QUFBQyxJQUFBLEtBQUssRUFBRTtBQUFFLE1BQUEsS0FBSyxFQUFFLE1BQVQ7QUFBaUIsTUFBQSxNQUFNLEVBQUUsS0FBekI7QUFBZ0MsTUFBQSxhQUFhLEVBQUU7QUFBL0M7QUFBUixHQUFMLEVBQ0EsZUFBQSxhQUFBLENBQUMsMEJBQUQsRUFBa0IsSUFBbEIsQ0FEQSxFQUVBLGVBQUEsYUFBQSxDQUFDLGlCQUFELEVBQUs7QUFBQyxJQUFBLEtBQUssRUFBRTtBQUFFLE1BQUEsTUFBTSxFQUFFLE1BQVY7QUFBa0IsTUFBQSxLQUFLLEVBQUUsQ0FBekI7QUFBNEIsTUFBQSxlQUFlLEVBQUUsZUFBTztBQUFwRDtBQUFSLEdBQUwsQ0FGQSxFQUdBLGVBQUEsYUFBQSxDQUFDLGdDQUFELEVBQXdCLElBQXhCLENBSEEsQ0FERixDQURPLENBQVA7QUFTRCxDIiwic291cmNlUm9vdCI6IiJ9

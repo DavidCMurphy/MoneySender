@@ -1,0 +1,15 @@
+481fc969ad90b5dd8cf3e67d060cdf81
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Observable_1 = require("../Observable");
+
+function isObservable(obj) {
+  return !!obj && (obj instanceof Observable_1.Observable || typeof obj.lift === 'function' && typeof obj.subscribe === 'function');
+}
+
+exports.isObservable = isObservable;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbnRlcm5hbC91dGlsL2lzT2JzZXJ2YWJsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQSxJQUFBLFlBQUEsR0FBQSxPQUFBLENBQUEsZUFBQSxDQUFBOztBQU9BLFNBQWdCLFlBQWhCLENBQWdDLEdBQWhDLEVBQXdDO0FBQ3RDLFNBQU8sQ0FBQyxDQUFDLEdBQUYsS0FBVSxHQUFHLFlBQVksWUFBQSxDQUFBLFVBQWYsSUFBOEIsT0FBTyxHQUFHLENBQUMsSUFBWCxLQUFvQixVQUFwQixJQUFrQyxPQUFPLEdBQUcsQ0FBQyxTQUFYLEtBQXlCLFVBQW5HLENBQVA7QUFDRDs7QUFGRCxPQUFBLENBQUEsWUFBQSxHQUFBLFlBQUEifQ==

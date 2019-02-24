@@ -1,0 +1,47 @@
+41258f66a67948a885d4307c1ad10ec2
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FailedSendEpic = exports.SendMoneyEpic = exports.errorMessage = exports.errorTitle = void 0;
+
+var _reduxObservable = require("redux-observable");
+
+var _ActionTypes = require("../../ActionTypes");
+
+var _rxjs = require("rxjs");
+
+var _operators = require("rxjs/operators");
+
+var errorTitle = "Error";
+exports.errorTitle = errorTitle;
+var errorMessage = "Insufficient funds";
+exports.errorMessage = errorMessage;
+
+var SendMoneyEpic = function SendMoneyEpic(action, store) {
+  return action.pipe((0, _reduxObservable.ofType)(_ActionTypes.TypeKeys.SEND_MONEY), (0, _operators.mergeMap)(function (action$) {
+    var state = store.value;
+    var total = state.account.totalAvailable;
+    var amount = +action$.transaction.amount;
+    return total - amount >= 0 ? (0, _rxjs.of)({
+      type: _ActionTypes.TypeKeys.SEND_MONEY_SUCCESS,
+      transaction: action$.transaction
+    }) : (0, _rxjs.concat)((0, _rxjs.of)({
+      type: _ActionTypes.TypeKeys.SEND_MONEY_FAIL
+    }));
+  }), (0, _operators.delay)(3000));
+};
+
+exports.SendMoneyEpic = SendMoneyEpic;
+
+var FailedSendEpic = function FailedSendEpic(action) {
+  return action.pipe((0, _reduxObservable.ofType)(_ActionTypes.TypeKeys.SEND_MONEY_FAIL), (0, _operators.mergeMap)(function () {
+    return (0, _rxjs.of)({
+      type: _ActionTypes.TypeKeys.SHOW_ERROR,
+      title: "Error",
+      message: "Insufficient funds"
+    });
+  }));
+};
+
+exports.FailedSendEpic = FailedSendEpic;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9TZW5kL0VwaWNzL2luZGV4LnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7OztBQUNBOztBQUNBOztBQU1BOztBQUNBOztBQUlPLElBQU0sVUFBVSxHQUFHLE9BQW5COztBQUNBLElBQU0sWUFBWSxHQUFHLG9CQUFyQjs7O0FBRUEsSUFBTSxhQUFhLEdBQUcsU0FBaEIsYUFBZ0IsQ0FDM0IsTUFEMkIsRUFFM0IsS0FGMkI7QUFBQSxTQUkzQixNQUFNLENBQUMsSUFBUCxDQUNFLDZCQUFPLHNCQUFTLFVBQWhCLENBREYsRUFFRSx5QkFDRSxVQUNFLE9BREYsRUFJSTtBQUNGLFFBQUksS0FBSyxHQUFHLEtBQUssQ0FBQyxLQUFsQjtBQUNBLFFBQUksS0FBSyxHQUFHLEtBQUssQ0FBQyxPQUFOLENBQWMsY0FBMUI7QUFDQSxRQUFJLE1BQU0sR0FBRyxDQUFDLE9BQU8sQ0FBQyxXQUFSLENBQW9CLE1BQWxDO0FBQ0EsV0FBTyxLQUFLLEdBQUcsTUFBUixJQUFrQixDQUFsQixHQUNILGNBQTJCO0FBQ3pCLE1BQUEsSUFBSSxFQUFFLHNCQUFTLGtCQURVO0FBRXpCLE1BQUEsV0FBVyxFQUFFLE9BQU8sQ0FBQztBQUZJLEtBQTNCLENBREcsR0FLSCxrQkFDRSxjQUF3QjtBQUFFLE1BQUEsSUFBSSxFQUFFLHNCQUFTO0FBQWpCLEtBQXhCLENBREYsQ0FMSjtBQVFELEdBakJILENBRkYsRUFxQkUsc0JBQU0sSUFBTixDQXJCRixDQUoyQjtBQUFBLENBQXRCOzs7O0FBNEJBLElBQU0sY0FBYyxHQUFHLFNBQWpCLGNBQWlCLENBQUMsTUFBRDtBQUFBLFNBQzVCLE1BQU0sQ0FBQyxJQUFQLENBQ0UsNkJBQU8sc0JBQVMsZUFBaEIsQ0FERixFQUVFLHlCQUNFO0FBQUEsV0FDRSxjQUFnQjtBQUNkLE1BQUEsSUFBSSxFQUFFLHNCQUFTLFVBREQ7QUFFZCxNQUFBLEtBQUssRUFBRSxPQUZPO0FBR2QsTUFBQSxPQUFPLEVBQUU7QUFISyxLQUFoQixDQURGO0FBQUEsR0FERixDQUZGLENBRDRCO0FBQUEsQ0FBdkIiLCJzb3VyY2VSb290IjoiIn0=

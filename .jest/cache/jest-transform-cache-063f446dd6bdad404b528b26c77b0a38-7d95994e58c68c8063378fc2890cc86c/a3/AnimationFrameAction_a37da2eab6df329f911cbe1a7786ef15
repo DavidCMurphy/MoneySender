@@ -1,0 +1,83 @@
+b42d589ce9dadd7cf56d683a0e2e2c2a
+"use strict";
+
+var __extends = this && this.__extends || function () {
+  var _extendStatics = function extendStatics(d, b) {
+    _extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) {
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+      }
+    };
+
+    return _extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    _extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var AsyncAction_1 = require("./AsyncAction");
+
+var AnimationFrameAction = function (_super) {
+  __extends(AnimationFrameAction, _super);
+
+  function AnimationFrameAction(scheduler, work) {
+    var _this = _super.call(this, scheduler, work) || this;
+
+    _this.scheduler = scheduler;
+    _this.work = work;
+    return _this;
+  }
+
+  AnimationFrameAction.prototype.requestAsyncId = function (scheduler, id, delay) {
+    if (delay === void 0) {
+      delay = 0;
+    }
+
+    if (delay !== null && delay > 0) {
+      return _super.prototype.requestAsyncId.call(this, scheduler, id, delay);
+    }
+
+    scheduler.actions.push(this);
+    return scheduler.scheduled || (scheduler.scheduled = requestAnimationFrame(function () {
+      return scheduler.flush(null);
+    }));
+  };
+
+  AnimationFrameAction.prototype.recycleAsyncId = function (scheduler, id, delay) {
+    if (delay === void 0) {
+      delay = 0;
+    }
+
+    if (delay !== null && delay > 0 || delay === null && this.delay > 0) {
+      return _super.prototype.recycleAsyncId.call(this, scheduler, id, delay);
+    }
+
+    if (scheduler.actions.length === 0) {
+      cancelAnimationFrame(id);
+      scheduler.scheduled = undefined;
+    }
+
+    return undefined;
+  };
+
+  return AnimationFrameAction;
+}(AsyncAction_1.AsyncAction);
+
+exports.AnimationFrameAction = AnimationFrameAction;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbnRlcm5hbC9zY2hlZHVsZXIvQW5pbWF0aW9uRnJhbWVBY3Rpb24udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxJQUFBLGFBQUEsR0FBQSxPQUFBLENBQUEsZUFBQSxDQUFBOztBQVNBLElBQUEsb0JBQUEsR0FBQSxVQUFBLE1BQUEsRUFBQTtBQUE2QyxFQUFBLFNBQUEsQ0FBQSxvQkFBQSxFQUFBLE1BQUEsQ0FBQTs7QUFFM0MsV0FBQSxvQkFBQSxDQUFzQixTQUF0QixFQUNzQixJQUR0QixFQUN5RTtBQUR6RSxRQUFBLEtBQUEsR0FFRSxNQUFBLENBQUEsSUFBQSxDQUFBLElBQUEsRUFBTSxTQUFOLEVBQWlCLElBQWpCLEtBQXNCLElBRnhCOztBQUFzQixJQUFBLEtBQUEsQ0FBQSxTQUFBLEdBQUEsU0FBQTtBQUNBLElBQUEsS0FBQSxDQUFBLElBQUEsR0FBQSxJQUFBOztBQUVyQjs7QUFFUyxFQUFBLG9CQUFBLENBQUEsU0FBQSxDQUFBLGNBQUEsR0FBVixVQUF5QixTQUF6QixFQUE2RCxFQUE3RCxFQUF1RSxLQUF2RSxFQUF3RjtBQUFqQixRQUFBLEtBQUEsS0FBQSxLQUFBLENBQUEsRUFBQTtBQUFBLE1BQUEsS0FBQSxHQUFBLENBQUE7QUFBaUI7O0FBRXRGLFFBQUksS0FBSyxLQUFLLElBQVYsSUFBa0IsS0FBSyxHQUFHLENBQTlCLEVBQWlDO0FBQy9CLGFBQU8sTUFBQSxDQUFBLFNBQUEsQ0FBTSxjQUFOLENBQW9CLElBQXBCLENBQW9CLElBQXBCLEVBQXFCLFNBQXJCLEVBQWdDLEVBQWhDLEVBQW9DLEtBQXBDLENBQVA7QUFDRDs7QUFFRCxJQUFBLFNBQVMsQ0FBQyxPQUFWLENBQWtCLElBQWxCLENBQXVCLElBQXZCO0FBSUEsV0FBTyxTQUFTLENBQUMsU0FBVixLQUF3QixTQUFTLENBQUMsU0FBVixHQUFzQixxQkFBcUIsQ0FDeEUsWUFBQTtBQUFNLGFBQUEsU0FBUyxDQUFDLEtBQVYsQ0FBQSxJQUFBLENBQUE7QUFBcUIsS0FENkMsQ0FBbkUsQ0FBUDtBQUVELEdBWlM7O0FBYUEsRUFBQSxvQkFBQSxDQUFBLFNBQUEsQ0FBQSxjQUFBLEdBQVYsVUFBeUIsU0FBekIsRUFBNkQsRUFBN0QsRUFBdUUsS0FBdkUsRUFBd0Y7QUFBakIsUUFBQSxLQUFBLEtBQUEsS0FBQSxDQUFBLEVBQUE7QUFBQSxNQUFBLEtBQUEsR0FBQSxDQUFBO0FBQWlCOztBQUl0RixRQUFLLEtBQUssS0FBSyxJQUFWLElBQWtCLEtBQUssR0FBRyxDQUEzQixJQUFrQyxLQUFLLEtBQUssSUFBVixJQUFrQixLQUFLLEtBQUwsR0FBYSxDQUFyRSxFQUF5RTtBQUN2RSxhQUFPLE1BQUEsQ0FBQSxTQUFBLENBQU0sY0FBTixDQUFvQixJQUFwQixDQUFvQixJQUFwQixFQUFxQixTQUFyQixFQUFnQyxFQUFoQyxFQUFvQyxLQUFwQyxDQUFQO0FBQ0Q7O0FBSUQsUUFBSSxTQUFTLENBQUMsT0FBVixDQUFrQixNQUFsQixLQUE2QixDQUFqQyxFQUFvQztBQUNsQyxNQUFBLG9CQUFvQixDQUFDLEVBQUQsQ0FBcEI7QUFDQSxNQUFBLFNBQVMsQ0FBQyxTQUFWLEdBQXNCLFNBQXRCO0FBQ0Q7O0FBRUQsV0FBTyxTQUFQO0FBQ0QsR0FoQlM7O0FBaUJaLFNBQUEsb0JBQUE7QUFBQyxDQXJDRCxDQUE2QyxhQUFBLENBQUEsV0FBN0MsQ0FBQTs7QUFBYSxPQUFBLENBQUEsb0JBQUEsR0FBQSxvQkFBQSJ9

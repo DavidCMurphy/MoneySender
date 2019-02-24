@@ -1,0 +1,8 @@
+139de0d4772b698a9ee799a121b1a235
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.TypeKeys = void 0;var TypeKeys;exports.TypeKeys = TypeKeys;
+(function (TypeKeys) {
+  TypeKeys["SEND_MONEY"] = "SEND_MONEY";
+  TypeKeys["SEND_MONEY_SUCCESS"] = "SEND_MONEY_SUCCESS";
+  TypeKeys["SEND_MONEY_FAIL"] = "SEND_MONEY_FAIL";
+  TypeKeys["SHOW_ERROR"] = "SHOW_ERROR";
+})(TypeKeys || (exports.TypeKeys = TypeKeys = {}));

@@ -1,0 +1,5 @@
+8c9945ab18d570a3aaae5e46174df45f
+jest.mock('react-native-svg-charts', function () {
+  return {};
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNldHVwLmpzIl0sIm5hbWVzIjpbImplc3QiLCJtb2NrIl0sIm1hcHBpbmdzIjoiQUFBQUEsSUFBSSxDQUFDQyxJQUFMLENBQVUseUJBQVYsRUFBcUM7QUFBQSxTQUFPLEVBQVA7QUFBQSxDQUFyQyIsInNvdXJjZXNDb250ZW50IjpbImplc3QubW9jaygncmVhY3QtbmF0aXZlLXN2Zy1jaGFydHMnLCAoKSA9PiAoe30pKVxuIl19

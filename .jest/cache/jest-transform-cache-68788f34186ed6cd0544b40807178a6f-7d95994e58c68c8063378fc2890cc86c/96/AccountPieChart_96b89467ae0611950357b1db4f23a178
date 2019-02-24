@@ -1,0 +1,14 @@
+579a5d81615ae851035115da1b738d59
+"use strict";var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _react = _interopRequireDefault(require("react"));
+var _reactNativeSvgCharts = require("react-native-svg-charts");
+var _reactRedux = require("react-redux");
+var _colors = require("../Themes/colors");
+var AccountPieChart = function AccountPieChart(props) {
+  return _react.default.createElement(_reactNativeSvgCharts.PieChart, { style: { height: 64, width: 64 }, data: [{ value: props.spent, svg: { fill: _colors.colors.lightGrey }, key: 0 },
+    { value: props.total, svg: { fill: _colors.colors.orange }, key: 1 }] });
+};
+var mapStateToProps = function mapStateToProps(state) {return {
+    total: state.account.totalAvailable,
+    spent: state.account.totalSent };};var _default =
+
+(0, _reactRedux.connect)(mapStateToProps)(AccountPieChart);exports.default = _default;

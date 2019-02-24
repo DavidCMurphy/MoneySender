@@ -1,0 +1,21 @@
+0ec4b2ccc4be7eab3d60b85c0581d226
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Observable_1 = require("../Observable");
+
+function scalar(value) {
+  var result = new Observable_1.Observable(function (subscriber) {
+    subscriber.next(value);
+    subscriber.complete();
+  });
+  result._isScalar = true;
+  result.value = value;
+  return result;
+}
+
+exports.scalar = scalar;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbnRlcm5hbC9vYnNlcnZhYmxlL3NjYWxhci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQSxJQUFBLFlBQUEsR0FBQSxPQUFBLENBQUEsZUFBQSxDQUFBOztBQUVBLFNBQWdCLE1BQWhCLENBQTBCLEtBQTFCLEVBQWtDO0FBQ2hDLE1BQU0sTUFBTSxHQUFHLElBQUksWUFBQSxDQUFBLFVBQUosQ0FBa0IsVUFBQSxVQUFBLEVBQVU7QUFDekMsSUFBQSxVQUFVLENBQUMsSUFBWCxDQUFnQixLQUFoQjtBQUNBLElBQUEsVUFBVSxDQUFDLFFBQVg7QUFDRCxHQUhjLENBQWY7QUFJQSxFQUFBLE1BQU0sQ0FBQyxTQUFQLEdBQW1CLElBQW5CO0FBQ0MsRUFBQSxNQUFjLENBQUMsS0FBZixHQUF1QixLQUF2QjtBQUNELFNBQU8sTUFBUDtBQUNEOztBQVJELE9BQUEsQ0FBQSxNQUFBLEdBQUEsTUFBQSJ9

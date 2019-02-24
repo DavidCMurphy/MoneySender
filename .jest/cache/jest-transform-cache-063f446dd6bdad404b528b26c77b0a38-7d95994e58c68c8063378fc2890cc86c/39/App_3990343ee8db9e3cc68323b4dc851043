@@ -1,0 +1,14 @@
+7187ab89437ea607d1141b31bc276ce9
+"use strict";
+/**
+ * @format
+ * @lint-ignore-every XPLATJSCOPYRIGHT1
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+require("react-native");
+describe('Customer history views should be presented', () => {
+    it('should render generic stats successfully', () => {
+        expect(true).toEqual(false);
+    });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2RhdmlkbXVycGh5L0Rlc2t0b3AvTW9uZXlTZW5kZXIvc3JjL19fdGVzdHNfXy9BcHAudHN4IiwibWFwcGluZ3MiOiI7QUFBQTs7O0dBR0c7O0FBRUgsd0JBQXFCO0FBRXJCLFFBQVEsQ0FBQyw0Q0FBNEMsRUFBRSxHQUFHLEVBQUU7SUFFMUQsRUFBRSxDQUFDLDBDQUEwQyxFQUFFLEdBQUcsRUFBRTtRQUNoRCxNQUFNLENBQUMsSUFBSSxDQUFDLENBQUMsT0FBTyxDQUFDLEtBQUssQ0FBQyxDQUFBO0lBQy9CLENBQUMsQ0FBQyxDQUFBO0FBQ0osQ0FBQyxDQUFDLENBQUEiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2RhdmlkbXVycGh5L0Rlc2t0b3AvTW9uZXlTZW5kZXIvc3JjL19fdGVzdHNfXy9BcHAudHN4Il0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGZvcm1hdFxuICogQGxpbnQtaWdub3JlLWV2ZXJ5IFhQTEFUSlNDT1BZUklHSFQxXG4gKi9cblxuaW1wb3J0ICdyZWFjdC1uYXRpdmUnXG5cbmRlc2NyaWJlKCdDdXN0b21lciBoaXN0b3J5IHZpZXdzIHNob3VsZCBiZSBwcmVzZW50ZWQnLCAoKSA9PiB7XG5cbiAgaXQoJ3Nob3VsZCByZW5kZXIgZ2VuZXJpYyBzdGF0cyBzdWNjZXNzZnVsbHknLCAoKSA9PiB7XG4gICAgICBleHBlY3QodHJ1ZSkudG9FcXVhbChmYWxzZSlcbiAgfSlcbn0pXG5cblxuIl0sInZlcnNpb24iOjN9

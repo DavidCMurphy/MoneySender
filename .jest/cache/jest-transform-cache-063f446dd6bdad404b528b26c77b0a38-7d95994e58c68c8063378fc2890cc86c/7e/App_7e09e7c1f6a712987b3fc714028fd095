@@ -1,0 +1,73 @@
+d84bbccfcb4fd2886ddd2924094c71c5
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.currency = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _redux = require("redux");
+
+var _Epics = require("./Send/Epics");
+
+var _Reducers = _interopRequireDefault(require("./Send/Reducers"));
+
+var _Error = _interopRequireDefault(require("./Error"));
+
+var _Reducers2 = _interopRequireDefault(require("./Account/Reducers"));
+
+var _reduxLogger = _interopRequireDefault(require("redux-logger"));
+
+var _reduxObservable = require("redux-observable");
+
+var _reactNative = require("react-native");
+
+var _SendFormComponent = _interopRequireDefault(require("./Send/SendFormComponent"));
+
+var _AccountDetailsComponent = _interopRequireDefault(require("./Account/AccountDetailsComponent"));
+
+var _colors = require("./Themes/colors");
+
+var _reactRedux = require("react-redux");
+
+var currency = "£";
+exports.currency = currency;
+var rootEpic = (0, _reduxObservable.combineEpics)(_Epics.SendMoneyEpic, _Epics.FailedSendEpic, _Error.default);
+var rootReducer = (0, _redux.combineReducers)({
+  send: _Reducers.default,
+  account: _Reducers2.default
+});
+var epicMiddleware = (0, _reduxObservable.createEpicMiddleware)();
+var combination = __DEV__ ? (0, _redux.compose)((0, _redux.applyMiddleware)(epicMiddleware, _reduxLogger.default)) : (0, _redux.applyMiddleware)(epicMiddleware);
+var store = (0, _redux.createStore)(rootReducer, combination);
+epicMiddleware.run(rootEpic);
+
+var _default = function _default() {
+  return _react.default.createElement(_reactRedux.Provider, {
+    store: store
+  }, _react.default.createElement(_reactNative.View, {
+    style: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "white"
+    }
+  }, _react.default.createElement(_reactNative.View, {
+    style: {
+      width: "100%",
+      height: "80%",
+      flexDirection: "row"
+    }
+  }, _react.default.createElement(_SendFormComponent.default, null), _react.default.createElement(_reactNative.View, {
+    style: {
+      height: "100%",
+      width: 1,
+      backgroundColor: _colors.colors.lightGrey
+    }
+  }), _react.default.createElement(_AccountDetailsComponent.default, null))));
+};
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9BcHAudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFTQTs7QUFDQTs7QUFPQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFFTyxJQUFNLFFBQVEsR0FBRyxHQUFqQjs7QUFPUCxJQUFNLFFBQVEsR0FBRyxtQ0FBYyxvQkFBZCxFQUE2QixxQkFBN0IsRUFBOEMsY0FBOUMsQ0FBakI7QUFDQSxJQUFNLFdBQVcsR0FBRyw0QkFBZ0I7QUFBRSxFQUFBLElBQUksRUFBSixpQkFBRjtBQUFRLEVBQUEsT0FBTyxFQUFQO0FBQVIsQ0FBaEIsQ0FBcEI7QUFDQSxJQUFNLGNBQWMsR0FBRyw0Q0FBdkI7QUFDQSxJQUFNLFdBQVcsR0FBRyxPQUFPLEdBQ3ZCLG9CQUFRLDRCQUFnQixjQUFoQixFQUFnQyxvQkFBaEMsQ0FBUixDQUR1QixHQUV2Qiw0QkFBZ0IsY0FBaEIsQ0FGSjtBQUdBLElBQU0sS0FBSyxHQUFpQix3QkFBWSxXQUFaLEVBQXlCLFdBQXpCLENBQTVCO0FBQ0EsY0FBYyxDQUFDLEdBQWYsQ0FBbUIsUUFBbkI7O2VBRWUsb0JBQUs7QUFDbEIsU0FDRSxlQUFBLGFBQUEsQ0FBQyxvQkFBRCxFQUFTO0FBQUMsSUFBQSxLQUFLLEVBQUU7QUFBUixHQUFULEVBQ0UsZUFBQSxhQUFBLENBQUMsaUJBQUQsRUFBSztBQUNILElBQUEsS0FBSyxFQUFFO0FBQ0wsTUFBQSxJQUFJLEVBQUUsQ0FERDtBQUVMLE1BQUEsVUFBVSxFQUFFLFFBRlA7QUFHTCxNQUFBLGNBQWMsRUFBRSxRQUhYO0FBSUwsTUFBQSxlQUFlLEVBQUU7QUFKWjtBQURKLEdBQUwsRUFRRSxlQUFBLGFBQUEsQ0FBQyxpQkFBRCxFQUFLO0FBQUMsSUFBQSxLQUFLLEVBQUU7QUFBRSxNQUFBLEtBQUssRUFBRSxNQUFUO0FBQWlCLE1BQUEsTUFBTSxFQUFFLEtBQXpCO0FBQWdDLE1BQUEsYUFBYSxFQUFFO0FBQS9DO0FBQVIsR0FBTCxFQUNFLGVBQUEsYUFBQSxDQUFDLDBCQUFELEVBQWtCLElBQWxCLENBREYsRUFFRSxlQUFBLGFBQUEsQ0FBQyxpQkFBRCxFQUFLO0FBQ0gsSUFBQSxLQUFLLEVBQUU7QUFDTCxNQUFBLE1BQU0sRUFBRSxNQURIO0FBRUwsTUFBQSxLQUFLLEVBQUUsQ0FGRjtBQUdMLE1BQUEsZUFBZSxFQUFFLGVBQU87QUFIbkI7QUFESixHQUFMLENBRkYsRUFTRSxlQUFBLGFBQUEsQ0FBQyxnQ0FBRCxFQUF3QixJQUF4QixDQVRGLENBUkYsQ0FERixDQURGO0FBd0JELEMiLCJzb3VyY2VSb290IjoiIn0=

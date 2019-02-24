@@ -1,0 +1,31 @@
+6123bd540494b51d430fab77152c9101
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _reactNative = require("react-native");
+
+var _reduxObservable = require("redux-observable");
+
+var _ActionTypes = require("../ActionTypes");
+
+var _rxjs = require("rxjs");
+
+var _operators = require("rxjs/operators");
+
+var _default = function _default(action) {
+  return action.pipe((0, _reduxObservable.ofType)(_ActionTypes.TypeKeys.SHOW_ERROR), (0, _operators.mergeMap)(function (action$) {
+    _reactNative.Alert.alert(action$.title, action$.message, [{
+      text: "Ok",
+      style: "cancel"
+    }], {
+      cancelable: true
+    });
+
+    return (0, _rxjs.of)();
+  }));
+};
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9FcnJvci9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7OztBQUNBOztBQUNBOztBQUNBOztBQUNBOztBQUNBOztlQVFlLGtCQUFDLE1BQUQ7QUFBQSxTQUNiLE1BQU0sQ0FBQyxJQUFQLENBQ0UsNkJBQU8sc0JBQVMsVUFBaEIsQ0FERixFQUVFLHlCQUFTLFVBQUMsT0FBRCxFQUF5QjtBQUNoQyx1QkFBTSxLQUFOLENBQ0UsT0FBTyxDQUFDLEtBRFYsRUFFRSxPQUFPLENBQUMsT0FGVixFQUdFLENBQUM7QUFBRSxNQUFBLElBQUksRUFBRSxJQUFSO0FBQWMsTUFBQSxLQUFLLEVBQUU7QUFBckIsS0FBRCxDQUhGLEVBSUU7QUFBRSxNQUFBLFVBQVUsRUFBRTtBQUFkLEtBSkY7O0FBTUEsV0FBTyxlQUFQO0FBQ0QsR0FSRCxDQUZGLENBRGE7QUFBQSxDIiwic291cmNlUm9vdCI6IiJ9

@@ -1,0 +1,55 @@
+49b6ed4c2cee1ae261679988a0fbe259
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.amountForm = exports.emailForm = exports.nameForm = void 0;
+
+var _App = require("../App");
+
+var nonEmpty = function nonEmpty(value) {
+  return value !== undefined && value.length > 0;
+};
+
+var validateEmail = function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return email ? re.test(email) : false;
+};
+
+var nonEmptyNumber = function nonEmptyNumber(number) {
+  return number ? /^-{0,1}\d+$/.test(number) : false;
+};
+
+var nameForm = function nameForm() {
+  return {
+    title: 'Name',
+    key: 'name',
+    errorString: 'Please enter a valid name',
+    validation: nonEmpty
+  };
+};
+
+exports.nameForm = nameForm;
+
+var emailForm = function emailForm() {
+  return {
+    title: 'Email Address',
+    key: 'email',
+    errorString: 'Please enter a valid email address',
+    validation: validateEmail
+  };
+};
+
+exports.emailForm = emailForm;
+
+var amountForm = function amountForm() {
+  return {
+    title: 'Amount',
+    key: 'amount',
+    errorString: 'Please enter a valid amount',
+    validation: nonEmptyNumber,
+    prefix: _App.currency
+  };
+};
+
+exports.amountForm = amountForm;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9TZW5kL0Zvcm1zLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O0FBRUE7O0FBRUEsSUFBTSxRQUFRLEdBQUcsU0FBWCxRQUFXLENBQUMsS0FBRDtBQUFBLFNBQThCLEtBQUssS0FBSyxTQUFWLElBQXVCLEtBQUssQ0FBQyxNQUFOLEdBQWUsQ0FBcEU7QUFBQSxDQUFqQjs7QUFFQSxJQUFNLGFBQWEsR0FBRyxTQUFoQixhQUFnQixDQUFDLEtBQUQsRUFBNEI7QUFDOUMsTUFBSSxFQUFFLEdBQUcsMkpBQVQ7QUFDQSxTQUFRLEtBQUQsR0FBVSxFQUFFLENBQUMsSUFBSCxDQUFRLEtBQVIsQ0FBVixHQUEyQixLQUFsQztBQUNELENBSEg7O0FBS0EsSUFBTSxjQUFjLEdBQUksU0FBbEIsY0FBa0IsQ0FBQyxNQUFEO0FBQUEsU0FBaUMsTUFBRCxHQUFhLGNBQWMsSUFBZCxDQUFtQixNQUFuQixDQUFiLEdBQTRDLEtBQTVFO0FBQUEsQ0FBeEI7O0FBRU8sSUFBTSxRQUFRLEdBQUcsU0FBWCxRQUFXO0FBQUEsU0FBa0I7QUFBRSxJQUFBLEtBQUssRUFBRSxNQUFUO0FBQ3hDLElBQUEsR0FBRyxFQUFFLE1BRG1DO0FBRXhDLElBQUEsV0FBVyxFQUFFLDJCQUYyQjtBQUd4QyxJQUFBLFVBQVUsRUFBRTtBQUg0QixHQUFsQjtBQUFBLENBQWpCOzs7O0FBS0EsSUFBTSxTQUFTLEdBQUcsU0FBWixTQUFZO0FBQUEsU0FBa0I7QUFBRSxJQUFBLEtBQUssRUFBRSxlQUFUO0FBQ3pDLElBQUEsR0FBRyxFQUFFLE9BRG9DO0FBRXpDLElBQUEsV0FBVyxFQUFFLG9DQUY0QjtBQUd6QyxJQUFBLFVBQVUsRUFBRTtBQUg2QixHQUFsQjtBQUFBLENBQWxCOzs7O0FBS0EsSUFBTSxVQUFVLEdBQUcsU0FBYixVQUFhO0FBQUEsU0FBa0I7QUFBRSxJQUFBLEtBQUssRUFBRSxRQUFUO0FBQ3hDLElBQUEsR0FBRyxFQUFFLFFBRG1DO0FBRXhDLElBQUEsV0FBVyxFQUFFLDZCQUYyQjtBQUd4QyxJQUFBLFVBQVUsRUFBRSxjQUg0QjtBQUl4QyxJQUFBLE1BQU0sRUFBRTtBQUpnQyxHQUFsQjtBQUFBLENBQW5CIiwic291cmNlUm9vdCI6IiJ9

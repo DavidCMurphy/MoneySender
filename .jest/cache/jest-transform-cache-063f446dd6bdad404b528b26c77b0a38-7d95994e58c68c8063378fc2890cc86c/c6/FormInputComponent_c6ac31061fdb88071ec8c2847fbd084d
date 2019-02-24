@@ -1,0 +1,169 @@
+f989a87b64a86e2573df2bd5c2bc1b4b
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _taggedTemplateLiteralLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/taggedTemplateLiteralLoose"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _native = _interopRequireDefault(require("styled-components/native"));
+
+var _colors = require("../Themes/colors");
+
+function _templateObject6() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n  flex-direction: row;\n  align-items: center;\n  border-bottom-width: 1px;\n  border-color: ", ";\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n    width: 100%;\n    margin-top: 36px;\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n    height: 42px;\n    width: 100%;\n    font-size: 20px;\n    color: ", ";\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n  font-size: 20px;\n  color: ", ";\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n  font-size: 15px;\n  font-family: System;\n  color: ", ";\n  margin-top: 10px;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = (0, _taggedTemplateLiteralLoose2.default)(["\n  font-size: 15px;\n  font-family: System;\n  color: ", "\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var FormTitle = _native.default.Text(_templateObject(), _colors.colors.title);
+
+var ErrorTitle = _native.default.Text(_templateObject2(), _colors.colors.red);
+
+var FormInputPrefix = _native.default.Text(_templateObject3(), _colors.colors.title);
+
+var FormInput = _native.default.TextInput(_templateObject4(), _colors.colors.title);
+
+var FormInputContainer = _native.default.View(_templateObject5());
+
+var FormTextInputContainer = _native.default.View(_templateObject6(), function (props) {
+  if (props.modifying == true) {
+    return _colors.colors.blue;
+  }
+
+  if (props.isValid == false) {
+    return _colors.colors.red;
+  }
+
+  return _colors.colors.lightGrey;
+});
+
+var FormInputComponent = function (_Component) {
+  (0, _inherits2.default)(FormInputComponent, _Component);
+
+  function FormInputComponent() {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, FormInputComponent);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(FormInputComponent).apply(this, arguments));
+    _this.state = {
+      isFocused: false
+    };
+    return _this;
+  }
+
+  (0, _createClass2.default)(FormInputComponent, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props$form = this.props.form,
+          validation = _this$props$form.validation,
+          value = _this$props$form.value,
+          isValid = _this$props$form.isValid,
+          prefix = _this$props$form.prefix;
+      return _react.default.createElement(FormInputContainer, null, _react.default.createElement(FormTitle, null, this.props.form.title), _react.default.createElement(FormTextInputContainer, {
+        isValid: isValid,
+        modifying: this.state.isFocused
+      }, _react.default.createElement(FormInputPrefix, null, prefix), _react.default.createElement(FormInput, {
+        value: value,
+        onFocus: function onFocus() {
+          return _this2.setState({
+            isFocused: true
+          });
+        },
+        onBlur: function onBlur() {
+          _this2.setState({
+            isFocused: false
+          });
+
+          _this2.props.onChange((0, _extends2.default)({}, _this2.props.form, {
+            isValid: validation(value)
+          }));
+        },
+        onChangeText: function onChangeText(text) {
+          _this2.props.onChange((0, _extends2.default)({}, _this2.props.form, {
+            value: text,
+            isValid: validation(text)
+          }));
+        }
+      })), this.props.form.isValid === false && !this.state.isFocused && _react.default.createElement(ErrorTitle, null, this.props.form.errorString));
+    }
+  }]);
+  return FormInputComponent;
+}(_react.Component);
+
+exports.default = FormInputComponent;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9TZW5kL0Zvcm1JbnB1dENvbXBvbmVudC50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTs7QUFDQTs7QUFDQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFFQSxJQUFNLFNBQVMsR0FBRyxnQkFBTyxJQUFWLG9CQUdILGVBQU8sS0FISixDQUFmOztBQUtBLElBQU0sVUFBVSxHQUFHLGdCQUFPLElBQVYscUJBR0osZUFBTyxHQUhILENBQWhCOztBQU9BLElBQU0sZUFBZSxHQUFHLGdCQUFPLElBQVYscUJBRVQsZUFBTyxLQUZFLENBQXJCOztBQUtBLElBQU0sU0FBUyxHQUFHLGdCQUFPLFNBQVYscUJBSUQsZUFBTyxLQUpOLENBQWY7O0FBTUEsSUFBTSxrQkFBa0IsR0FBRyxnQkFBTyxJQUFWLG9CQUF4Qjs7QUFJQSxJQUFNLHNCQUFzQixHQUFHLGdCQUFPLElBQVYscUJBSVQsVUFBQyxLQUFELEVBQVU7QUFDM0IsTUFBSSxLQUFLLENBQUMsU0FBTixJQUFtQixJQUF2QixFQUE2QjtBQUMzQixXQUFPLGVBQU8sSUFBZDtBQUNEOztBQUNELE1BQUksS0FBSyxDQUFDLE9BQU4sSUFBaUIsS0FBckIsRUFBNEI7QUFDMUIsV0FBTyxlQUFPLEdBQWQ7QUFDRDs7QUFDRCxTQUFPLGVBQU8sU0FBZDtBQUNBLENBWjBCLENBQTVCOztJQWtDcUIsa0I7OztBQUFyQixnQ0FBQTtBQUFBOztBQUFBOztBQUVJLFVBQUEsS0FBQSxHQUFRO0FBQ04sTUFBQSxTQUFTLEVBQUU7QUFETCxLQUFSO0FBRko7QUE4QkM7Ozs7NkJBeEJTO0FBQUE7O0FBQUEsNkJBQzJDLEtBQUssS0FBTCxDQUFXLElBRHREO0FBQUEsVUFDSSxVQURKLG9CQUNJLFVBREo7QUFBQSxVQUNnQixLQURoQixvQkFDZ0IsS0FEaEI7QUFBQSxVQUN1QixPQUR2QixvQkFDdUIsT0FEdkI7QUFBQSxVQUNnQyxNQURoQyxvQkFDZ0MsTUFEaEM7QUFFSixhQUFPLGVBQUEsYUFBQSxDQUFDLGtCQUFELEVBQW1CLElBQW5CLEVBQ0wsZUFBQSxhQUFBLENBQUMsU0FBRCxFQUFVLElBQVYsRUFBYSxLQUFLLEtBQUwsQ0FBVyxJQUFYLENBQWdCLEtBQTdCLENBREssRUFFTCxlQUFBLGFBQUEsQ0FBQyxzQkFBRCxFQUF1QjtBQUFDLFFBQUEsT0FBTyxFQUFHLE9BQVg7QUFBcUIsUUFBQSxTQUFTLEVBQUcsS0FBSyxLQUFMLENBQVc7QUFBNUMsT0FBdkIsRUFDQyxlQUFBLGFBQUEsQ0FBQyxlQUFELEVBQWdCLElBQWhCLEVBQ0csTUFESCxDQURELEVBSUEsZUFBQSxhQUFBLENBQUMsU0FBRCxFQUFVO0FBQ04sUUFBQSxLQUFLLEVBQUcsS0FERjtBQUVOLFFBQUEsT0FBTyxFQUFHO0FBQUEsaUJBQU0sTUFBSSxDQUFDLFFBQUwsQ0FBYztBQUFFLFlBQUEsU0FBUyxFQUFFO0FBQWIsV0FBZCxDQUFOO0FBQUEsU0FGSjtBQUdOLFFBQUEsTUFBTSxFQUFHLGtCQUFLO0FBQ1osVUFBQSxNQUFJLENBQUMsUUFBTCxDQUFjO0FBQUUsWUFBQSxTQUFTLEVBQUU7QUFBYixXQUFkOztBQUNBLFVBQUEsTUFBSSxDQUFDLEtBQUwsQ0FBVyxRQUFYLENBQW1CLHVCQUFBLEVBQUEsRUFBTSxNQUFJLENBQUMsS0FBTCxDQUFXLElBQWpCLEVBQXFCO0FBQUUsWUFBQSxPQUFPLEVBQUUsVUFBVSxDQUFFLEtBQUY7QUFBckIsV0FBckIsQ0FBbkI7QUFDRCxTQU5LO0FBT04sUUFBQSxZQUFZLEVBQUcsc0JBQUMsSUFBRCxFQUFTO0FBQ3RCLFVBQUEsTUFBSSxDQUFDLEtBQUwsQ0FBVyxRQUFYLENBQW1CLHVCQUFBLEVBQUEsRUFBTSxNQUFJLENBQUMsS0FBTCxDQUFXLElBQWpCLEVBQXFCO0FBQUUsWUFBQSxLQUFLLEVBQUUsSUFBVDtBQUFlLFlBQUEsT0FBTyxFQUFFLFVBQVUsQ0FBRSxJQUFGO0FBQWxDLFdBQXJCLENBQW5CO0FBQ0Q7QUFUSyxPQUFWLENBSkEsQ0FGSyxFQWtCRixLQUFLLEtBQUwsQ0FBVyxJQUFYLENBQWdCLE9BQWhCLEtBQTRCLEtBQTdCLElBQXVDLENBQUMsS0FBSyxLQUFMLENBQVcsU0FBbkQsSUFDRSxlQUFBLGFBQUEsQ0FBQyxVQUFELEVBQVcsSUFBWCxFQUFjLEtBQUssS0FBTCxDQUFXLElBQVgsQ0FBZ0IsV0FBOUIsQ0FuQkMsQ0FBUDtBQXFCRDs7O0VBN0IyQyxnQiIsInNvdXJjZVJvb3QiOiIifQ==

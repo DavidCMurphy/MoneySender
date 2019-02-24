@@ -1,0 +1,29 @@
+805bdf73e3db44851107757b99543e93
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importDefault(require("react"));
+const react_native_1 = require("react-native");
+const react_redux_1 = require("react-redux");
+const colors_1 = require("../Themes/colors");
+const native_1 = __importDefault(require("styled-components/native"));
+const TransactionItem_1 = __importDefault(require("./TransactionItem"));
+const TransactionsListTitle = native_1.default.Text `
+    font-weight: bold;
+    font-size: 16px;
+    font-family: Alverata;
+    color: ${colors_1.colors.title};
+    margin-bottom: 20PX;
+`;
+const AccountTransactionsList = (props) => {
+    return (react_1.default.createElement(react_native_1.View, { style: { flex: 1 } },
+        react_1.default.createElement(TransactionsListTitle, null, "Transactions"),
+        react_1.default.createElement(react_native_1.FlatList, { style: { flex: 1 }, data: props.transactions, renderItem: ({ item }) => react_1.default.createElement(TransactionItem_1.default, Object.assign({}, item)), keyExtractor: (_, index) => String(index) })));
+};
+const mapStateToProps = (state) => ({
+    transactions: state.account.transations
+});
+exports.default = react_redux_1.connect(mapStateToProps)(AccountTransactionsList);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2RhdmlkbXVycGh5L0Rlc2t0b3AvTW9uZXlTZW5kZXIvc3JjL0FjY291bnQvQWNjb3VudFRyYW5zYWN0aW9uc0xpc3QudHN4IiwibWFwcGluZ3MiOiI7Ozs7O0FBQUEsa0RBQXlCO0FBQ3pCLCtDQUE2QztBQUM3Qyw2Q0FBcUM7QUFFckMsNkNBQXlDO0FBRXpDLHNFQUE2QztBQUM3Qyx3RUFBK0M7QUFFL0MsTUFBTSxxQkFBcUIsR0FBRyxnQkFBTSxDQUFDLElBQUksQ0FBQTs7OzthQUkzQixlQUFNLENBQUMsS0FBTTs7Q0FFMUIsQ0FBQTtBQU1ELE1BQU0sdUJBQXVCLEdBQUcsQ0FBQyxLQUFlLEVBQUUsRUFBRTtJQUNoRCxPQUFPLENBQUMsOEJBQUMsbUJBQUksSUFBQyxLQUFLLEVBQUUsRUFBRSxJQUFJLEVBQUUsQ0FBQyxFQUFFO1FBQzVCLDhCQUFDLHFCQUFxQix1QkFFRztRQUN6Qiw4QkFBQyx1QkFBUSxJQUNMLEtBQUssRUFBRSxFQUFFLElBQUksRUFBRSxDQUFDLEVBQUUsRUFDbEIsSUFBSSxFQUFFLEtBQUssQ0FBQyxZQUFZLEVBQ3hCLFVBQVUsRUFBRSxDQUFDLEVBQUMsSUFBSSxFQUFDLEVBQUUsRUFBRSxDQUFDLDhCQUFDLHlCQUFlLG9CQUFNLElBQUksRUFBSyxFQUN2RCxZQUFZLEVBQUcsQ0FBQyxDQUFDLEVBQUUsS0FBSyxFQUFFLEVBQUUsQ0FBQyxNQUFNLENBQUMsS0FBSyxDQUFDLEdBQzVDLENBQ0UsQ0FBQyxDQUFBO0FBQ2IsQ0FBQyxDQUFBO0FBRUQsTUFBTSxlQUFlLEdBQUcsQ0FBQyxLQUFZLEVBQUUsRUFBRSxDQUFDLENBQUM7SUFDdkMsWUFBWSxFQUFFLEtBQUssQ0FBQyxPQUFPLENBQUMsV0FBVztDQUMxQyxDQUFDLENBQUE7QUFFRixrQkFBZSxxQkFBTyxDQUFDLGVBQWUsQ0FBQyxDQUFDLHVCQUF1QixDQUFDLENBQUEiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2RhdmlkbXVycGh5L0Rlc2t0b3AvTW9uZXlTZW5kZXIvc3JjL0FjY291bnQvQWNjb3VudFRyYW5zYWN0aW9uc0xpc3QudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCdcbmltcG9ydCB7IFZpZXcsIEZsYXRMaXN0IH0gZnJvbSAncmVhY3QtbmF0aXZlJ1xuaW1wb3J0IHsgY29ubmVjdCB9IGZyb20gJ3JlYWN0LXJlZHV4J1xuaW1wb3J0IHsgU3RhdGUgfSBmcm9tICcuLi9BcHAnXG5pbXBvcnQgeyBjb2xvcnMgfSBmcm9tICcuLi9UaGVtZXMvY29sb3JzJ1xuaW1wb3J0IHsgVHJhbnNhY3Rpb24gfSBmcm9tICcuLi9TZW5kL1JlZHVjZXJzJ1xuaW1wb3J0IHN0eWxlZCBmcm9tICdzdHlsZWQtY29tcG9uZW50cy9uYXRpdmUnXG5pbXBvcnQgVHJhbnNhY3Rpb25JdGVtIGZyb20gJy4vVHJhbnNhY3Rpb25JdGVtJ1xuXG5jb25zdCBUcmFuc2FjdGlvbnNMaXN0VGl0bGUgPSBzdHlsZWQuVGV4dGBcbiAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICBmb250LXNpemU6IDE2cHg7XG4gICAgZm9udC1mYW1pbHk6IEFsdmVyYXRhO1xuICAgIGNvbG9yOiAkeyBjb2xvcnMudGl0bGUgfTtcbiAgICBtYXJnaW4tYm90dG9tOiAyMFBYO1xuYFxuXG5pbnRlcmZhY2UgUGllUHJvcHMge1xuICAgIHRyYW5zYWN0aW9uczogVHJhbnNhY3Rpb25bXVxufVxuXG5jb25zdCBBY2NvdW50VHJhbnNhY3Rpb25zTGlzdCA9IChwcm9wczogUGllUHJvcHMpID0+IHtcbiAgICByZXR1cm4gKDxWaWV3IHN0eWxlPXt7IGZsZXg6IDEgfX0+XG4gICAgICAgIDxUcmFuc2FjdGlvbnNMaXN0VGl0bGU+XG4gICAgICAgICAgICBUcmFuc2FjdGlvbnNcbiAgICAgICAgPC8gVHJhbnNhY3Rpb25zTGlzdFRpdGxlPlxuICAgICAgICA8RmxhdExpc3RcbiAgICAgICAgICAgIHN0eWxlPXt7IGZsZXg6IDEgfX1cbiAgICAgICAgICAgIGRhdGE9e3Byb3BzLnRyYW5zYWN0aW9uc31cbiAgICAgICAgICAgIHJlbmRlckl0ZW09eyh7aXRlbX0pID0+IDxUcmFuc2FjdGlvbkl0ZW0geyAuLi5pdGVtIH0gLz59XG4gICAgICAgICAgICBrZXlFeHRyYWN0b3I9eyAoXywgaW5kZXgpID0+IFN0cmluZyhpbmRleCkgfVxuICAgICAgICAvPlxuICAgIDwvIFZpZXc+KVxufVxuXG5jb25zdCBtYXBTdGF0ZVRvUHJvcHMgPSAoc3RhdGU6IFN0YXRlKSA9PiAoe1xuICAgIHRyYW5zYWN0aW9uczogc3RhdGUuYWNjb3VudC50cmFuc2F0aW9uc1xufSlcblxuZXhwb3J0IGRlZmF1bHQgY29ubmVjdChtYXBTdGF0ZVRvUHJvcHMpKEFjY291bnRUcmFuc2FjdGlvbnNMaXN0KSJdLCJ2ZXJzaW9uIjozfQ==
