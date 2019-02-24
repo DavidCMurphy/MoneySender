@@ -5,6 +5,8 @@ Money Sender
 
 A simple application that displays a form and allows the user to submit transactions to be removed from their account.
 
+This exercise was completed in under 5 hours and was required to match a design specification, time was a consideration in some of the choices made.
+
 To run the app install the dependancies and run the app, you can do this through npm with:
 
 ```
@@ -32,4 +34,6 @@ Redux-Observable was used as a middleware, this allows us to potentially add in 
 Could of added layout support for iphone, i feel the UI is pretty flexible and wouldnt of required too much more time.
 
 The jest tests are working but run twice over both the js and ts files, wasnt able to track this issue down in the remaining time i had.
+
+Wasn't able to mock out the delay so the tests run a little slow.
 
